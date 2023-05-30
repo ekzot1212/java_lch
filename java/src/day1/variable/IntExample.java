@@ -16,7 +16,7 @@ public class IntExample {
 		//1234567890123은 int로 표현할 수 없는 큰 숫자.
 		long num6 = 1234567890123L;		//long, float = 리터럴 뒤에 식별자 적어야 함.
 		
-		
+		//노트북 git 테스트
 		
 	}
 
