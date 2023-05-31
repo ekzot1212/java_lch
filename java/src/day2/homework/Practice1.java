@@ -13,8 +13,12 @@ import java.util.Scanner;
 public class Practice1 {
 
 	public static void main(String[] args) {
-		Scanner sc1 = new Scanner(System.in);
-
+		Scanner sc = new Scanner(System.in);
+		String str = sc.nextLine();
+		
+		System.out.println("두 정수와 산술연산자를 입력하세요. ");
+		System.out.println(str);
+				
 	}
 
 }
