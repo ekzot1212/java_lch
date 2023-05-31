@@ -17,6 +17,8 @@ public class CharExample1 {
 		System.out.println(ch5);
 		System.out.println(ch6);
 
+		
+		
 	}
 
 }
