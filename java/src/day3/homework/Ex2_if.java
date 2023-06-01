@@ -13,17 +13,40 @@ public class Ex2_if {
 		 * input gender : W 
 		 * Are you a women? woman
 		 */
+		
 		System.out.println("input gender : ");
 		Scanner sc = new Scanner(System.in);
+		
+		
+		char ch = sc.next().charAt(0);
+		
+		if(ch == 'M') {
+			System.out.println("Are you a woman?");
+			System.out.println("Man");
+		}
+		
+		if(ch == 'W') {
+			System.out.println("Are you a woman?");
+			System.out.println("Woman");
+		}
+		
+		if((ch != 'M') && (ch != 'W')) {
+			System.out.println("성별을 'M' 또는 'W'으로 입력해 주세요");
+		}
+		
+		//		문자열로 받아서 str.equals() 함수 이용하여 출력하기
+		
+		/*
 		String str = sc.next();
 		
 		if(str.equals("M")) {
-			System.out.println("Are you a woman? man");
+			System.out.println("Are you a woman? \nman");
 		}
 		
 		if(str.equals("W")) {
-			System.out.println("Are you a woman? woman");
+			System.out.println("Are you a woman? \nwoman");
 		}
+		*/
 	}
 
 }

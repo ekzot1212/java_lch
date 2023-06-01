@@ -18,11 +18,12 @@ public class Ex1_conditional {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		String str = sc.next();
-		System.out.println("Are you a woman? : " + str.equals("W") );
+		char ch = sc.next().charAt(0);
+		boolean whatIsGender = (ch == 'W');
+		System.out.println("Are you a woman? : " + whatIsGender);
 		
 		
-
+		
 	}
 
 }
