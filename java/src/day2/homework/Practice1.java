@@ -21,7 +21,9 @@ public class Practice1 {
 		char ch = sc.next().charAt(0);
 		int num2 = sc.nextInt();
 		System.out.println(num1 + " " + ch + " " + num2 + " = " + (num1 + num2));
-				
+		
+		sc.close();
+		
 	}
 
 }

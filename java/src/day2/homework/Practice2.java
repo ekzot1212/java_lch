@@ -1,10 +1,10 @@
 /**
- * ë‘ ì •ìˆ˜ë¥¼ ì…ë ¥ë°›ì•„ ë‘ ì •ìˆ˜ì˜ ì‚°ìˆ  ì—°ì‚° ê²°ê³¼ë¥¼ ì¶œë ¥í•˜ëŠ” ì½”ë“œë¥¼ ì‘ì„±í•˜ì„¸ìš”. 
- * ë‹¨, 2ë²ˆì§¸ ìˆ«ìëŠ” 0ì´ ì•„ë‹ˆì—¬ì•¼ í•¨.
+ * µÎ Á¤¼ö¸¦ ÀÔ·Â¹Ş¾Æ µÎ Á¤¼öÀÇ »ê¼ú ¿¬»ê °á°ú¸¦ Ãâ·ÂÇÏ´Â ÄÚµå¸¦ ÀÛ¼ºÇÏ¼¼¿ä. 
+ * ´Ü, 2¹øÂ° ¼ıÀÚ´Â 0ÀÌ ¾Æ´Ï¿©¾ß ÇÔ.
  * 
- * ì˜ˆ: 
- * ë‘ ì •ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”.
- * 1 2 [ì—”í„°] 
+ * ¿¹: 
+ * µÎ Á¤¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä.
+ * 1 2 [¿£ÅÍ] 
  * 1 + 2 = 3
  * 1 - 2 = -1
  * 1 * 2 = 2
@@ -20,7 +20,7 @@ public class Practice2 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("ë‘ ì •ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
+		System.out.println("µÎ Á¤¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
 		
 		int num1 = sc.nextInt();
 		int num2 = sc.nextInt();
@@ -28,6 +28,10 @@ public class Practice2 {
 		System.out.println(num1 + " - " + num2 + " = " + (num1 - num2));
 		System.out.println(num1 + " * " + num2 + " = " + (num1 * num2));
 		System.out.println(num1 + " / " + num2 + " = " + ((double)num1 / num2));
+		System.out.println(num1 + " % " + num2 + " = " + (num1 % num2));
+		
+		sc.close();
+		
 	}
 
 }
