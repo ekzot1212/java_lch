@@ -23,7 +23,6 @@ public class Ex1_conditional {
 		System.out.println("Are you a woman? : " + whatIsGender);
 		
 		
-		
 	}
 
 }
