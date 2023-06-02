@@ -6,7 +6,7 @@ public class NestedIfEx {
 		/*
 		 * 2, 3, 6의 배수 판별 예제
 		 * (day4.practice패키지에 IfMultipleEx 문제)
-		 * 
+		 *    
 		 */
 		
 		int num = 12;
