@@ -1,5 +1,7 @@
 package day4.homework;
 
+import java.util.Scanner;
+
 public class TriangleEx {
 
 	public static void main(String[] args) {
@@ -15,6 +17,40 @@ public class TriangleEx {
 		 * Able to create triangle.
 		 * 
 		 */
+		System.out.println("input 3 integer num :");
+		Scanner sc = new Scanner(System.in);
+		int x = sc.nextInt();
+		int y = sc.nextInt();
+		int z = sc.nextInt();
+		
+		if(x >= y && x >= z) {
+			if(x < (y+z)) {
+				System.out.println("Able to create triangle. ");
+			}
+			else {
+				System.out.println("Unable to create triangle.");
+			}
+		}
+		
+		else if(y >= x && y >= z) {
+			if(y < (x+z)) {
+				System.out.println("Able to create triangle. ");
+			}
+			else {
+				System.out.println("Unable to create triangle.");
+			}
+			
+		}
+		
+		else {
+			if(z < (x+y)) {
+				System.out.println("Able to create triangle. ");
+			}
+			else {
+				System.out.println("Unable to create triangle.");
+			}
+			
+		}
 	}
 
 }
