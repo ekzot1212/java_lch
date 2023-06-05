@@ -25,8 +25,8 @@ public class TeamLeaderEx {
 		System.out.println("학생번호를 입력하시오.");
 		int i = sc.nextInt();
 		
-		switch (i) {
-		case 3,6,9,12,15,18,21,24,27,30:
+		switch (i % 3) {
+		case 0:
 			System.out.println(i + "번 학생은 조장입니다.");
 			break;
 

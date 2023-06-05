@@ -19,7 +19,8 @@ public class PrimeNumberEx {
 
 		if (count == 2) {
 			System.out.println(num + " 는 소수입니다.");
-		} else {
+		} 
+		else {
 			System.out.println(num + " 는 소수가 아닙니다.");
 		}
 	}
