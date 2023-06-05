@@ -17,39 +17,31 @@ public class TriangleEx {
 		 * Able to create triangle.
 		 * 
 		 */
+		
 		System.out.println("input 3 integer num :");
 		Scanner sc = new Scanner(System.in);
 		int x = sc.nextInt();
 		int y = sc.nextInt();
 		int z = sc.nextInt();
+		int max = 0;
 		
 		if(x >= y && x >= z) {
-			if(x < (y+z)) {
-				System.out.println("Able to create triangle. ");
-			}
-			else {
-				System.out.println("Unable to create triangle.");
-			}
+			max = x;
 		}
 		
 		else if(y >= x && y >= z) {
-			if(y < (x+z)) {
-				System.out.println("Able to create triangle. ");
-			}
-			else {
-				System.out.println("Unable to create triangle.");
-			}
-			
+			max = y;
 		}
 		
 		else {
-			if(z < (x+y)) {
-				System.out.println("Able to create triangle. ");
-			}
-			else {
-				System.out.println("Unable to create triangle.");
-			}
-			
+			max = z;
+		}
+		
+		if((x+y+z) - max > max) {			//두 변의 합 > 가장 큰 변 = 삼각형 만들 수 있음.
+			System.out.println("Able to create triangle. ");
+		}
+		else {
+			System.out.println("Unable to create triangle.");
 		}
 	}
 
