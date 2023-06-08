@@ -11,7 +11,7 @@ public class StarEx5 {
 		 * 
 		 */
 		
-		int line = 5;
+		int line = 10;
 		
 		for (int i = 1; i <= line ; i++) {
 			for (int j = line ; j>i ; j--) {
@@ -26,14 +26,14 @@ public class StarEx5 {
 			System.out.println();
 		}
 		
-		for (int i = line; i >0 ; i--) {
-			for (int j = line ; j>=i ; j--) {
+		for (int i = line-1; i >0 ; i--) {
+			for (int j = line-1 ; j>=i ; j--) {
 				System.out.print(" ");
 			}
 			for (int j = 1; j <= i; j++) {
 				System.out.print("*");
 			}
-			for (int j = 1; j <= i-1; j++) {
+			for (int j = 0; j <= i-2; j++) {
 				System.out.print("*");
 			}
 			System.out.println();
