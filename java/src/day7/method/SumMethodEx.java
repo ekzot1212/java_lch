@@ -1,7 +1,11 @@
 package day7.method;
 
 public class SumMethodEx {
-
+	
+	public static int sum(int num1, int num2) {
+		return num1 + num2;
+	}
+	
 	public static void main(String[] args) {
 		/*
 		 * 두 정수의 합을 구하는 함수(메서드)를 만드세요.
@@ -12,9 +16,7 @@ public class SumMethodEx {
 		System.out.println(result);
 	}
 	
-	public static int sum(int num1, int num2) {
-		return num1 + num2;
-	}
+	
 	
 	//void == return값이 없을때 쓰는것
 	//static변수 = 상수변수

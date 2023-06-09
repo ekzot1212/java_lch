@@ -3,15 +3,16 @@ package day7.homework;
 public class StarEx5 {
 
 	public static void main(String[] args) {
-		/* *
-		 * **
-		 * ***
-		 * ****
-		 * *****
-		 * 
-		 */
+		/*    *		i=1 공=3
+		 *   ***	1=2 공=2
+		 *  *****
+		 * *******
+		 *  *****
+		 *   ***
+		 *    *
+		 */   
 		
-		int line = 10;
+		int line = 4;
 		
 		for (int i = 1; i <= line ; i++) {
 			for (int j = line ; j>i ; j--) {
