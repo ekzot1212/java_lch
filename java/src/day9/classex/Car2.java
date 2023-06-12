@@ -33,12 +33,12 @@ public class Car2 {
 	public void speedChange(boolean positive) {
 		if(!power)
 			return;
-		else if(gear == 'P' && gear == 'N') {
+		else if(gear == 'P' || gear == 'N') {
 			return;
 		}
 		else if(positive)
 			speed++;
-		else
+		else if(speed >0)
 			speed--;
 	}
 

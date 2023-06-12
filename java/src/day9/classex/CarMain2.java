@@ -14,6 +14,10 @@ public class CarMain2 {
 		myCar.speedChange(true);
 		myCar.printInfo();
 		myCar.speedChange(false);
+		myCar.printInfo();
+		myCar.setGear('P');
+		myCar.turn();
+		myCar.printInfo();
 	}
 	
 }
