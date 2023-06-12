@@ -9,7 +9,7 @@ public class MethodScoreEx {
  * @param args
  */
 	
-	public static String score(int score) {
+	public static String getGrade(int score) {
 		if(score >= 90)
 			return "A";
 		else if(score > 80)
@@ -28,7 +28,7 @@ public class MethodScoreEx {
 		Scanner sc = new Scanner(System.in);
 		int score = sc.nextInt();
 		
-		System.out.println("학점은 " + score(score) + " 입니다.");
+		System.out.println("학점은 " + getGrade(score) + " 입니다.");
 	}
 
 }
