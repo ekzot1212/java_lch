@@ -35,6 +35,9 @@ class Point2 {			//public class 붙이려면 파일명과 클래스 명이 같�
 	public int getY() {
 		return y;
 	}
+	public void print() {
+		System.out.println(x + " , " + y);
+	}
 
 	
 	
