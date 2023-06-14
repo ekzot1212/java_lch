@@ -32,52 +32,59 @@ public class BaseballGameEx {
 		Scanner sc= new Scanner(System.in);
 		int arr1[] = new int[3];
 		int arr2[] = new int[3];
-		int count = 0;
+		int s = 0;
+		int b = 0;
 		
 		createRandomArray(1, 9, arr1);
 		printArray(arr1);
 		System.out.println();
 		
-		
+		//arr2 배열 입력받기
 		for(int i =0; i < arr2.length ; i++) {
 			arr2[i] = sc.nextInt();
 		}
-		printArray(arr2);
-		for(int i = 0; i < arr2.length ; i++) {
-			if(arr1[i] == arr2[i])
-			count++;
+		System.out.println();
+		
+		
+		for (int i = 0; i < 3; i++) {
+
+			if(contains(arr2[i], 3, arr1)) {
+				if(arr2[i] == arr1[i]) {
+					s++;
+				}
+				else {
+					b++;
+				}
+			}
+			
 		}
-		if(count != 0 && count < 3) {
-			System.out.println();
-			System.out.print(count + "S ");
+		if(s != 0 || b != 0) {
+			System.out.println(s + "S " + b + "B");
+			
 		}
 		else {
-			System.out.println();
-			System.out.println("Good !");
+			System.out.println("30");
 		}
-		
-		for(int i = 0; i < arr2.length ; i++)
-		count = 0;
-		
-		
 	}
 
 	
-	
-	
+	/** 정수 num가 배열의 0번지부터 count개 만큼 확인했을 때 중복된 값이 있는지
+	 *  없는지 알려주는 메서드 있으면 true
+	 *  매개변수 :
+	 *  리턴타입 :
+	 *  메서드명 : contains
+	 */
 	public static boolean contains(int num, int count, int arr[]) {
 		int i;
 		for(i=0; i<count; i++) {
 			if(num == arr[i]) {
-				break;
+				return true;
 			}
 		} 
-		if(i != count) {
-			return true;
-		}
-		else
-			return false;
+		return false;
 	}
+	
+	
 	
 	public static void createRandomArray(int min, int max, int arr[]) {
 		//배열이 생성되어 있지 않으면(배열이 null이면)
