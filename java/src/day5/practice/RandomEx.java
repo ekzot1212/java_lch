@@ -12,7 +12,7 @@ public class RandomEx {
 		//min <= r * (max-min+1) + min < max + 1
 		
 		int min = 2, max = 10;
-		double random = (int)Math.random() * (max - min +1) + min;
+		double random = (int)(Math.random() * (max - min +1) + min);
 		
 		System.out.println(random);
 	}
