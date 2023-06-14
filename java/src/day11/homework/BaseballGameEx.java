@@ -1,4 +1,7 @@
 package day11.homework;
+
+import java.util.Scanner;
+
 /*
  * 숫자 야구 게임을 구현하세요.
  * 1~9 사이의 중복되지 않은 세 수를 맞추는 게임.
@@ -26,6 +29,36 @@ package day11.homework;
 public class BaseballGameEx {
 
 	public static void main(String[] args) {
+		Scanner sc= new Scanner(System.in);
+		int arr1[] = new int[3];
+		int arr2[] = new int[3];
+		int count = 0;
+		
+		createRandomArray(1, 9, arr1);
+		printArray(arr1);
+		System.out.println();
+		
+		
+		for(int i =0; i < arr2.length ; i++) {
+			arr2[i] = sc.nextInt();
+		}
+		printArray(arr2);
+		for(int i = 0; i < arr2.length ; i++) {
+			if(arr1[i] == arr2[i])
+			count++;
+		}
+		if(count != 0 && count < 3) {
+			System.out.println();
+			System.out.print(count + "S ");
+		}
+		else {
+			System.out.println();
+			System.out.println("Good !");
+		}
+		
+		for(int i = 0; i < arr2.length ; i++)
+		count = 0;
+		
 		
 	}
 
@@ -59,7 +92,7 @@ public class BaseballGameEx {
 		}
 		//랜덤한 수 중복없이 채워넣기
 		int count = 0;
-		while(count < 3) {
+		while(count < arr.length) {
 			int random = (int) (Math.random() * (max - min + 1) + min);
 			//중복되지 않으면 배열에 저장 후 count 증가
 			if(!contains(random, count, arr)) {
@@ -68,5 +101,11 @@ public class BaseballGameEx {
 			}
 		}
 
+	}
+	
+	public static void printArray(int arr[]) {
+		for(int i : arr) {
+			System.out.print(i + " ");
+		}
 	}
 }
