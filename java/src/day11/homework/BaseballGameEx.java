@@ -59,11 +59,15 @@ public class BaseballGameEx {
 			
 		}
 		if(s != 0 || b != 0) {
-			System.out.println(s + "S " + b + "B");
-			
+			if(s==3) {
+				System.out.println("Good !");
+			}
+			else {
+				System.out.println(s + "S " + b + "B");
+			}
 		}
 		else {
-			System.out.println("30");
+			System.out.println("3O");
 		}
 	}
 
