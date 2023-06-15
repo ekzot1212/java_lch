@@ -1,5 +1,7 @@
 package array;
 
+import java.util.Scanner;
+
 public class Array {
 
 	public static void printArray(int arr[]) {
@@ -91,6 +93,20 @@ public class Array {
 		}
 		//반복문이 끝날때까지 중복이 없으면 중복 없음 => false
 		return false;
+	}
+	/**
+	 * 배열에 입력값 받아서 넣기
+	 * 매개변수 : 배열의 크기 int
+	 * 반환타입 : int[] 배열
+	 * 메서드명 : scanArray
+	 */
+	public static int[] scanArray(int num) {
+		Scanner sc = new Scanner(System.in);
+		int arr[] = new int[num];
+		for(int i = 0; i < num; i++) {
+			arr[i] = sc.nextInt();
+		}
+		return arr;
 	}
 	
 

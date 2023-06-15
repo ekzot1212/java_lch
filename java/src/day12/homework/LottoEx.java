@@ -1,5 +1,7 @@
 package day12.homework;
 
+import java.util.Scanner;
+
 import array.Array;
 
 /*
@@ -32,8 +34,28 @@ public class LottoEx {
 
 	public static void main(String[] args) {
 		int arr[] = new int[7];
+		int arr2[] = new int[6];
+		int count=0;
 		Array.createRandomArray(1, 45, arr);
 		Array.printArray(arr);
+		
+		
+		Array.scanArray(6);
+		
+		for (int i = 0; i < 6; i++) {
+			if (Array.contains(arr[i], 6, arr2)) {
+				count++;
+			}
+		}
+		if(count ==6) System.out.println("1등");
+		else if(count ==5 && Array.contains(arr[6], 6, arr2)) System.out.println("2등");
+		else if(count ==5) System.out.println("3등");
+		else if(count ==4) System.out.println("4등");
+		else if(count ==3) System.out.println("5등");
+		else System.out.println("꽝");
+		
+		
+		
+		
 	}
-
 }
