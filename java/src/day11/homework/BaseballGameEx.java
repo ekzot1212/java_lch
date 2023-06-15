@@ -39,52 +39,60 @@ public class BaseballGameEx {
 		printArray(arr1);
 		System.out.println();
 		
-		//arr2 배열 입력받기
-		for(int i =0; i < arr2.length ; i++) {
-			arr2[i] = sc.nextInt();
-		}
+		
 		System.out.println();
 		
-		
-		for (int i = 0; i < 3; i++) {
+		game(arr1,arr2);
+	}
 
-			if(contains(arr2[i], 3, arr1)) {
-				if(arr2[i] == arr1[i]) {
+	public static void game(int arr1[], int arr2[]) {
+		while (true) {
+			Scanner sc = new Scanner(System.in);
+			for (int i = 0; i < arr2.length; i++) {
+				arr2[i] = sc.nextInt();
+			}
+
+			int s = 0;
+			int b = 0;
+			for (int i = 0; i < 3; i++) {
+
+				if (contains(arr2[i], 3, arr1)) {
+					if (arr2[i] == arr1[i]) {
+						s++;
+					} else {
+						b++;
+					}
+				}
+
+			}
+			if (s != 0 || b != 0) {
+				if (s == 3) {
+					System.out.println("Good !");
 					s++;
+					break;
+				} else {
+					System.out.println(s + "S " + b + "B");
 				}
-				else {
-					b++;
-				}
+			} else {
+				System.out.println("3O");
 			}
-			
-		}
-		if(s != 0 || b != 0) {
-			if(s==3) {
-				System.out.println("Good !");
-			}
-			else {
-				System.out.println(s + "S " + b + "B");
-			}
-		}
-		else {
-			System.out.println("3O");
 		}
 	}
 
-	
-	/** 정수 num가 배열의 0번지부터 count개 만큼 확인했을 때 중복된 값이 있는지
-	 *  없는지 알려주는 메서드 있으면 true
-	 *  매개변수 :
-	 *  리턴타입 :
-	 *  메서드명 : contains
+	/**
+	 * 정수 num가 배열의 0번지부터 count개 만큼 확인했을 때 중복된 값이 있는지 없는지 
+	 * 알려주는 메서드 있으면 true 
+	 * 매개변수 :
+	 * 리턴타입 : 
+	 * 메서드명 : contains
 	 */
 	public static boolean contains(int num, int count, int arr[]) {
 		int i;
-		for(i=0; i<count; i++) {
-			if(num == arr[i]) {
+		for (i = 0; i < count; i++) {
+			if (num == arr[i]) {
 				return true;
 			}
-		} 
+		}
 		return false;
 	}
 	
