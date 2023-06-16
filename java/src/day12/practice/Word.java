@@ -1,10 +1,12 @@
 package day12.practice;
 
+import lombok.Data;
+
+@Data		//getter, setter, toString, equals 를 자동 추가하는 어노테이션
 public class Word {
 	/*
 	 * 한 단어를 관리하는 클래스
 	 */
-
 		// 멤버변수
 		private String title;
 		private String meaning[];
@@ -30,7 +32,10 @@ public class Word {
 			meaningCount = w.meaningCount;
 		}
 		
+		
 		//메서드
+		
+		
 		/**
 		 * 단어와 뜻을 출력하는 메서드
 		 * 매개변수 : 없음
@@ -92,6 +97,33 @@ public class Word {
 				meaning[meaningCount-1] = null;
 				meaningCount--;
 
-			}
-
 		}
+		/**
+		 * 수정할 뜻의 번지와 수정할 뜻이 주어지면 뜻을 수정하고 수정 여부를 알려주는 메서드
+		 * 매개변수 : 수정할 뜻의 번호, 수정할 뜻 = int meaingNum, String meaning
+		 * 리턴타입 : 수정 여부 -> boolean
+		 * 메서드명 : updateMeaing
+		 * @param meaningIndex
+		 * @param meaning2
+		 * @return
+		 */
+		public boolean updateMeaning(int meaningNum, String meaning) {
+			//수정할 뜻의 번호가 잘못된 경우
+			if(meaningNum > meaningCount || meaningNum <= 0) {
+			return false;
+			}
+			//meaningNum는 1부터 이고 번지(index)는 0부터이기 때문에 -1을 한다.
+			this.meaning[meaningNum-1] = meaning;
+			return true;
+		}
+
+		//getter
+		public String getTitle() {
+			return title;
+		}
+		//setter
+		public void setTitle(String title) {
+			this.title = title;
+		}
+
+	}
