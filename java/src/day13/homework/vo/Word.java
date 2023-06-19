@@ -1,4 +1,4 @@
-package day13.homework;
+package day13.homework.vo;
 
 import lombok.Data;
 
