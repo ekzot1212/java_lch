@@ -103,15 +103,30 @@ public class ShopManager {
 	
 	private void printProduct() {
 		System.out.println("제품 조회");			//1. 전체 조회 
-		System.out.print("모델명 : ");			//2. 모델명 검색
-		String modelName = sc.next();
-		
-		int index = indexOfModelname(modelName);
-		if(index == -1) {
-			System.out.println("모델명 검색 실패 !");
-			return;
+		System.out.println("1. 전체 조회");			//1. 전체 조회 
+		System.out.println("2. 모델명 검색");			//1. 전체 조회 
+		System.out.println("입력 : ");
+		int num = sc.nextInt();
+		switch(num) {
+		case 1:
+			printAll();
+			break;
+		case 2:
+			System.out.print("모델명 : ");			//2. 모델명 검색
+			String modelName = sc.next();
+			
+			int index = indexOfModelname(modelName);
+			if(index == -1) {
+				System.out.println("모델명 검색 실패 !");
+				return;
+			}
+			print(index);
+			break;
+		default:
+			System.out.println("메뉴 번호를 잘못 입력하셨습니다.");
+				
 		}
-		print(index);
+		
 	}
 	
 	private void printAll() {
