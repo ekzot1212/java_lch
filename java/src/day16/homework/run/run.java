@@ -1,4 +1,7 @@
 package day16.homework.run;
+
+import day16.homework.controller.BeverageMachineEx;
+
 /*
  * 음료수를 뽑는 자판기 프로그램을 작성하세요.
  * 단 음료수 자판기에 음료수는 사이다, 콜라, 환타가 고정이라고 가정.
@@ -13,8 +16,8 @@ package day16.homework.run;
 public class run {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		BeverageMachineEx machine = new BeverageMachineEx();
+		machine.run();
 	}
 
 }
