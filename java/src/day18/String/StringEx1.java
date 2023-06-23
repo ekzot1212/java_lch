@@ -51,9 +51,13 @@ public class StringEx1 {
 		//split : 구준자를 기준으로 문자열을 추출해서 순서대로 배열에 저장 가능.
 		String str5 = "사과,배,포도";
 		String fruits[] = str5.split(",");
+		
 		for(String fruit : fruits) {
 			System.out.println(fruit);
 		}
+		
+		
+		
 		
 	}
 	
