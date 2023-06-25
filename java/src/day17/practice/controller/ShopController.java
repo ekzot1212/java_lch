@@ -2,7 +2,7 @@ package day17.practice.controller;
 
 import java.util.Scanner;
 
-import day17.interfaceex.RunInterface;
+import day17.interfaceex.Program;
 import day17.practice.service.ShopService;
 import day17.practice.service.ShopServiceImp;
 import day17.practice.vo.Customer;
@@ -27,7 +27,7 @@ import lombok.Data;
 
 @Data
 
-public class ShopController implements RunInterface {
+public class ShopController implements Program {
 	
 	private Scanner sc = new Scanner(System.in);
 	private Product list[] = new Product[10];

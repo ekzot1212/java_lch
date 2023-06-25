@@ -12,26 +12,25 @@ import java.util.Scanner;
  * dog.exe : Not image
  * 
  */
-public class ImgEx {
+public class ImgEx  {
+	public void imgRun() {
 
-	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		String imageName[] = { "jpg", "bmp", "png" };
-		
+
 		String str = sc.nextLine();
 		String fileName[] = str.split("\\.");
-		
-		
+
 		for (int i = 0; i < imageName.length; i++) {
-			if (fileName[fileName.length-1].equals(imageName[i])) {
+			if (fileName[fileName.length - 1].equals(imageName[i])) {
 				System.out.println(str + " : is Image.");
 				break;
 			}
-			if(i == imageName.length-1) {
+			if (i == imageName.length - 1) {
 				System.out.println(str + " : is  not Image.");
 			}
 		}
-		
-	}
 
+	}
+	
 }

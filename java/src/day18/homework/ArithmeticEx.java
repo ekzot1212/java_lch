@@ -14,7 +14,7 @@ public class ArithmeticEx {
 
 }
 
-class Run implements ProgramInterface{
+class Run implements Program{
 	
 	Scanner sc= new Scanner(System.in);
 	int num1,num2;
@@ -83,5 +83,9 @@ class Run implements ProgramInterface{
 	public static int mod(int num1, int num2) {
 		return num1%num2;
 	}
+
+	
+
+	
 	
 }

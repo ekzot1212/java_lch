@@ -3,9 +3,9 @@ package day13.homework.controller;
 import java.util.Scanner;
 
 import day13.homework.vo.VocabularyNote;
-import day17.interfaceex.RunInterface;
+import day17.interfaceex.Program;
 
-public class VocabularyNoteController implements RunInterface {
+public class VocabularyNoteController implements Program {
 	
 	private Scanner sc = new Scanner(System.in);
 	

@@ -1,6 +1,6 @@
 package day17.interfaceex;
 
-public interface RunInterface {
+public interface Program {
 	/* public final static */	int NUM = 10;	//클래스 상수 => 클래스를 이용하여 호출	
 	//인터페이스는 상수라서 값 넣어줘야 에러안남.
 	
