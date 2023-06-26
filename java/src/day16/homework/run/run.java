@@ -1,6 +1,6 @@
 package day16.homework.run;
 
-import day16.homework.controller.BeverageMachineEx;
+import day16.homework.controller.BeverageMachine;
 
 /*
  * 음료수를 뽑는 자판기 프로그램을 작성하세요.
@@ -16,8 +16,8 @@ import day16.homework.controller.BeverageMachineEx;
 public class run {
 
 	public static void main(String[] args) {
-		BeverageMachineEx machine = new BeverageMachineEx();
-		machine.run();
+		BeverageMachine bm = new BeverageMachine();
+		bm.run();
 	}
 
 }

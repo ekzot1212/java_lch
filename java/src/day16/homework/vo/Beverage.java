@@ -1,22 +1,27 @@
 package day16.homework.vo;
 
-public class Beverage {
-	private String beverageName;
-	private int beveragePrice;
-	private int beverageQuantity;
-	
-	
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
+
+public class Beverage {private String name;
+private int price;
+private int amount;
+
+public void store(int amount) {
+	if(amount < 0) {
+		return;
+	}
+	this.amount += amount;
 }
 
-
-class Cola extends Beverage{
-	
+/*
+public Beverage(String name, int price, int amount){
+	this.name = name;
+	this.price = price;
+	this.amount = amount;
 }
-
-class Fanta extends Beverage{
-	
-
-}
-class Cider extends Beverage{
-	
+*/
 }
