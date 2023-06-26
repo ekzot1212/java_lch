@@ -1,5 +1,6 @@
 package day19.homework;
 
+import java.text.MessageFormat;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -15,9 +16,10 @@ public class ArithmeticEx {
 		}catch(InputMismatchException e){
 			System.out.println("Wrong input");
 		}catch(ArithmeticException e) {
-			System.out.println("Arithmetic Error");
+			System.out.println(e.getMessage());
+		}catch(Exception e) {							//제일 큰 예외
+			System.out.println("Exception!!");
 		}
-		
 	}
 	
 	
@@ -70,29 +72,43 @@ public class ArithmeticEx {
 		System.out.println("3. Exit");
 	}
 
-	public void calculator() {
+	public void calculator () {
 		
 		switch (op) {
 		case '+':
 			res = num1 + num2;
 			break;
+			
 		case '-':
 			res = num1 - num2;
 			break;
+			
 		case '*':
 			res = num1*num2;
 			break;
+			
 		case '/':
-			res = (double)num1/num2;
+			if(num2 == 0) {
+				throw new ArithmeticException("It should not be divided by zero.");		// 예외를 발생시키기
+			}
+			res = num1 / (double)num2;
 			break;
+			
 		case '%':
+			if(num2 == 0) {
+				throw new ArithmeticException("It should not be divided by zero.");		//예외를 발생시키기 -> 만나면 바로 메서드 리턴
+			}
 			res = num1%num2;
 			break;
+			
 		default:
 			System.out.println("Wrong Operater");
 			return;
 		}
-		System.out.println("" + num1 + op + num2 + "=" +res );
+		
+		String message = "{0} {1} {2} = {3}";
+		String result = MessageFormat.format(message, num1, op, num2, res);		//메세지 포맷으로 출력
+		System.out.println(result);
 	}
 
 }

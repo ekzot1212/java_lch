@@ -12,10 +12,14 @@ import java.util.Scanner;
  * dog.exe : Not image
  * 
  */
-public class ImgEx  {
-	public void imgRun() {
+public class ImgEx1 implements Program1 {
+	@Override
+	public void run() {
 
 		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Input File name : ");
+		
 		String imageName[] = { "jpg", "bmp", "png" };
 
 		String str = sc.nextLine();
@@ -32,5 +36,7 @@ public class ImgEx  {
 		}
 
 	}
+
+	
 	
 }
