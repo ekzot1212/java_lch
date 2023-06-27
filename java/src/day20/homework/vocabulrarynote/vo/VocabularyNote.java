@@ -8,7 +8,7 @@ public class VocabularyNote {
 	 */
 	// 멤버변수
 	private ArrayList<Word> wordList = new ArrayList<>();
-	private int max;
+	private int max = 10;
 
 	// 생성자
 	public VocabularyNote() {
