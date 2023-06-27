@@ -2,8 +2,9 @@ package day20.homework.vocabulrarynote.controller;
 
 import java.util.Scanner;
 
-import day13.homework.vo.VocabularyNote;
-import day17.interfaceex.Program;
+import day20.homework.vocabulrarynote.Program;
+import day20.homework.vocabulrarynote.vo.VocabularyNote;
+
 
 public class VocabularyNoteController implements Program {
 	
@@ -11,7 +12,7 @@ public class VocabularyNoteController implements Program {
 	
 	private VocabularyNote note = new VocabularyNote();		//멤버변수로 되어있지 않으면 매개변수로 하나씩 넘겨줘야 됨.
 																//(메서드에서)
-	
+	@Override
 	public void run() {
 		
 		int menu=0;
@@ -35,7 +36,7 @@ public class VocabularyNoteController implements Program {
 	 * 메서드명 : printMenu
 	 * 
 	 */
-	private void printMenu() {
+	public void printMenu() {
 		System.out.println("메뉴");
 		System.out.println("1. 단어 추가");
 		System.out.println("2. 단어 삭제");
@@ -52,7 +53,7 @@ public class VocabularyNoteController implements Program {
 	 * 메서드명 : runMenu
 	 */
 	
-	private void runMenu(int menu) {
+	public void runMenu(int menu) {
 		switch(menu) {
 		case 1:
 			System.out.println("===============");
@@ -234,6 +235,7 @@ public class VocabularyNoteController implements Program {
 		System.out.println("3. 뜻 삭제");
 		System.out.print("서브 메뉴 선택 : ");
 	}
+	
 }
 
 

@@ -1,19 +1,21 @@
 package day20.homework.vocabulrarynote.vo;
 
+import java.util.ArrayList;
 
 public class VocabularyNote {
 	/*
 	 * 영어 단어장 클래스를 만들고 테스트 하는 코드를 작성하세요.
 	 */
 	// 멤버변수
-	private Word wordList[];
-	private int wordCount;
+	private ArrayList<Word> wordList = new ArrayList<>();
+	private int max;
 
 	// 생성자
 	public VocabularyNote() {
-		wordList = new Word[10];
+		wordList = new ArrayList<>();
 	}
 	//생성자 2
+	/*
 	public VocabularyNote(Word wordList[]) {
 		//기존 단어장의 크기와 10을 비교해서 큰 수로 단어장 크기로 선택
 		int size = wordList.length > 10 ? wordList.length : 10;
@@ -23,6 +25,7 @@ public class VocabularyNote {
 		}
 		wordCount = wordList.length;
 	}
+	*/
 
 	// 메서드
 	/**
@@ -34,8 +37,8 @@ public class VocabularyNote {
 	 */
 	public void print() {
 		System.out.println("==============");
-		for(int i = 0; i < wordCount ; i++) {
-			wordList[i].print();
+		for(int i = 0; i < wordList.size() ; i++) {
+			wordList.get(i).print();
 			System.out.println("==============");
 		}
 	}
@@ -47,13 +50,14 @@ public class VocabularyNote {
 	 */
 	public void insert(Word word) {
 		//단어장에 단어가 다 찼으면 추가를 하지 못함.
-		if(wordCount == wordList.length) {
+		if(wordList.size() == max) {
 			System.out.println("단어장이 꽉 찼습니다 !");
 			return;
 		}
+		wordList.add(word);
 		// 깊은 복사를 위해 Word의 복사 생성자를 이용하여 
 		// 새 단어를 생성한 후 추가
-		wordList[wordCount++] = new Word(word);		//wordList[wordCount] = new Word(word)
+		//wordList[wordCount++] = new Word(word);		//wordList[wordCount] = new Word(word)
 													//wordCount++;
 	}
 	
@@ -75,19 +79,22 @@ public class VocabularyNote {
 	 */
 	public int insert(String title, String meaning) {
 		//단어장에 단어가 다 찼으면 추가를 하지 못함.
-		if(wordCount == wordList.length) {
+		if(max == wordList.size()) {
 			//System.out.println("단어장이 꽉 찼습니다 !");
 			return 0;
 		}
-		int index = indexOf(title);
+		//int index = indexOf(title);
+		Word tmp = new Word(title, meaning);
+		
+		int index = wordList.indexOf(tmp);
 		//없는 단어이면 새 단어를 추가
 		if(index == -1) {
 			// 단어와 뜻을 이용해 단어 객체를 생성한 후 단어장에 추가
-			wordList[wordCount++] = new Word(title, meaning);
+			wordList.add(tmp);
 			return 1;
 		}
 		//있는 단어이면 뜻을 추가.
-		wordList[index].addMeaning(meaning);
+		wordList.get(index).addMeaning(meaning);
 		return -1;
 	}
 	
@@ -99,13 +106,19 @@ public class VocabularyNote {
 	 */
 	public boolean delete(String title) {
 		//단어가 어디있는지 찾아야 함.
-		int index = indexOf(title);
+		//int index = indexOf(title);
+		Word tmp = new Word(title,"");
+		int index = wordList.indexOf(tmp);
 		//단어가 단어장에 없으면 알림 메세지 출력 후 종료
 		if(index == -1) {
 			//System.out.println("단어가 없읍니다.");
 			return false;
 		}
+		
+		wordList.remove(index);
+		return true;
 		//찾은 위치부터 한칸씩 당겨옴.
+		/*
 		for(int i = index; i<wordCount ; i++) {
 			wordList[i] = wordList[i+1];	
 		}
@@ -115,6 +128,8 @@ public class VocabularyNote {
 		//마지막 단어를 비워줌(null)
 		wordList[wordCount] = null;
 		return true;
+		*/
+		
 	}
 	/**
 	 * 단어가 주어지면 단어가 있는 위치를 알려주는 메서드
@@ -123,6 +138,7 @@ public class VocabularyNote {
 	 * 리턴타입 : 번지 -> int
 	 * 메서드명 : indexOf
 	 */
+	/*
 	public int indexOf(String title) {
 		//단어장에 등록된 단어들을 조회
 		for(int i = 0; i<wordCount; i++) {
@@ -132,6 +148,7 @@ public class VocabularyNote {
 		}
 		return -1;
 	}
+	*/
 	
 	/**
 	 * 단어가 주어지면 단어장에 해당 단어를 출력하고
@@ -141,14 +158,16 @@ public class VocabularyNote {
 	 * 메서드명 : search
 	 */
 	public boolean search(String title) {
-		int index = indexOf(title);
+		//int index = indexOf(title);
+		Word tmp = new Word(title,"");
+		int index = wordList.indexOf(tmp);
 		
 		if(index == -1) {
 			//System.out.println("단어가 없읍니다.");
 			return false;
 		}
 		
-		wordList[index].print();
+		wordList.get(index).print();
 		return true;
 	}
 	
@@ -164,13 +183,17 @@ public class VocabularyNote {
 	 */
 	public boolean updateMeaning(String title, int meaningIndex, String meaning) {
 		
-		int index = indexOf(title);
+		//int index = indexOf(title);
+		
+		Word tmp = new Word(title,meaning);
+		int index = wordList.indexOf(tmp);
+		
 		if(index == -1) {
 			//System.out.println("단어가 없읍니다.");
 			return false;
 		}
 		
-		if(!wordList[index].updateMeaning(meaningIndex, meaning)) {
+		if(!wordList.get(index).updateMeaning(meaningIndex, meaning)) {
 			//System.out.println("잘못된 숫자 입니다.");
 			return false;
 		}
@@ -184,13 +207,17 @@ public class VocabularyNote {
 	 * 메서드명 : updateTitle
 	 */
 	public boolean updateTitle(String title, String updateTitle) {
-		int index = indexOf(title);
+		//int index = indexOf(title);
+		Word tmp = new Word(title, "");
+		int index = wordList.indexOf(tmp);
+		
+		
 		if(index == -1) {
 			//System.out.println("단어가 없읍니다.");
 			return false;
 		}
 		
-		wordList[index].setTitle(updateTitle);
+		wordList.get(index).setTitle(updateTitle);
 		return true;
 	}
 	
@@ -202,15 +229,27 @@ public class VocabularyNote {
 	 */
 	public boolean deleteMeaning(String title, int num) {
 		//단어의 위치를 찾음
-		int index = indexOf(title);
+		//int index = indexOf(title);
 		//단어가 없으면 삭제 못함
+		Word tmp = new Word(title, "");
+		int index = wordList.indexOf(tmp);
+		
+		
 		if(index == -1) {
 			return false;
 		}
-		Word tmp = wordList[index];
+		//Word tmp = wordList[index];
+		
+		if(wordList.get(index).removeMeaning(num)) {
+			return true;
+		}
+		
+		
+		/*
 		if(tmp.removeMeaning(num)) {
 			return true;
 		}
+		*/
 		
 		return false;
 	}

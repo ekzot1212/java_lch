@@ -1,5 +1,8 @@
 package day20.homework.vocabulrarynote.vo;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 import lombok.Data;
 
 @Data		//getter, setter, toString, equals 를 자동 추가하는 어노테이션
@@ -9,21 +12,20 @@ public class Word {
 	 */
 		// 멤버변수
 		private String title;
-		private String meaning[];
-		private int meaningCount;
+		private ArrayList<String> meaning = new ArrayList<>();
 		
 		//생성자
 		public Word(String title, String meaning) {
 			this.title = title;
-			this.meaning = new String[5]; // 기본 5개의 뜻
-			this.meaning[0] = meaning;
-			meaningCount++;
+			this.meaning.add(meaning); 
 		}
 		public Word(String title) {
 			this.title = title;
-			this.meaning = new String[5]; // 배열생성은 해야됨.
 		}
-		public Word(Word w) {
+		
+		//복사 생성자 인듯?
+		/*
+		public Word(Word w) {		
 			this.title = w.title;
 			this.meaning = new String[5];
 			for(int i = 0; i< w.meaningCount; i++) {
@@ -31,6 +33,7 @@ public class Word {
 			}
 			meaningCount = w.meaningCount;
 		}
+		*/
 		
 		
 		//메서드
@@ -45,10 +48,8 @@ public class Word {
 		 */
 		public void print() {
 			System.out.println("word : " + title);
-			System.out.println("meaning : ");
-			for(int i = 0; i < meaningCount; i++) {
-				System.out.println(i+1 + ". " + meaning[i]);
-			}
+			//System.out.println("meaning : ");
+			System.out.println(meaning);
 		}
 		
 		/**
@@ -58,23 +59,15 @@ public class Word {
 		 * 메서드명 : addMeaning
 		 */
 		public void addMeaning(String meaning) {
-			//뜻이 가득 차면 다 찼다고 출력하고 종료
-			if(meaningCount == this.meaning.length) {
-				System.out.println("뜻이 가득 찼습니다.");
+			
+			if(this.meaning.size() == 5) {
+				System.out.println("뜻이 가득찼습니다.");
 				return;
 			}
-				this.meaning[meaningCount] = meaning;
-				meaningCount++;
+				this.meaning.add(meaning);	//뜻 추가
 		}
 		
-		public void addMeaning2(String meaning) {
-			for(int i = 0; i<this.meaning.length ; i++) {
-				if(this.meaning[i]==null) {
-					this.meaning[i] = meaning;
-					return;
-				}
-			}
-		}
+		
 		
 		/**
 		 * 뜻을 제거하고, 제거 여부를 알려주는 메서드
@@ -83,20 +76,18 @@ public class Word {
 		 * 메서드명 : removeMeaning
 		 */
 		public boolean removeMeaning(int num) {
-			if(num > meaningCount || num < 1) {
-				//System.out.println("작동 될 수 없음.");
+			int index = num-1;
+			
+			// 인덱스 범위 벗어나면 예외처리 해야함.
+			if(index < 0 || index >= this.meaning.size()) {
+				System.out.println("뜻 번호 입력 오류입니다.");
 				return false;
 			}
+			//뜻 삭제
+			this.meaning.remove(index);
+			return true;
 				
-				//num-1 번지부터 하나씩 당겨와서 덮어쓰기 함.
 				
-				for(int i = num-1 ; i < meaningCount-1; i++) {
-					meaning[i] = meaning[i+1];
-				}
-				//마지막에 쓸모없는 데이터를 지움
-				meaning[meaningCount-1] = null;
-				meaningCount--;
-				return true;
 
 		}
 		/**
@@ -109,15 +100,30 @@ public class Word {
 		 * @return
 		 */
 		public boolean updateMeaning(int meaningNum, String meaning) {
-			//수정할 뜻의 번호가 잘못된 경우
-			if(meaningNum > meaningCount || meaningNum <= 0) {
-			return false;
-			}
-			//meaningNum는 1부터 이고 번지(index)는 0부터이기 때문에 -1을 한다.
-			this.meaning[meaningNum-1] = meaning;
+			int index = meaningNum -1;
+			
+			this.meaning.set(index, meaning);
 			return true;
 		}
+		
+		
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Word other = (Word) obj;
+			return Objects.equals(title, other.title);
+		}
+		@Override
+		public int hashCode() {
+			return Objects.hash(title);
+		}
 
+		/*
 		//getter
 		public String getTitle() {
 			return title;
@@ -126,6 +132,7 @@ public class Word {
 		public void setTitle(String title) {
 			this.title = title;
 		}
+		*/
 		
 		
 		
