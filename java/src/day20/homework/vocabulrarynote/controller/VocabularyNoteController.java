@@ -2,11 +2,10 @@ package day20.homework.vocabulrarynote.controller;
 
 import java.util.Scanner;
 
-import day20.homework.vocabulrarynote.Program;
 import day20.homework.vocabulrarynote.vo.VocabularyNote;
 
 
-public class VocabularyNoteController implements Program {
+public class VocabularyNoteController implements day20.practice.student.controller.Program {
 	
 	private Scanner sc = new Scanner(System.in);
 	
