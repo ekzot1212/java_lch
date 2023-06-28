@@ -1,6 +1,6 @@
 package day21.homework.updown.run;
 
-import day21.practice.updown.controller.GameManager;
+import day21.homework.updown.controller.GameManager;
 
 public class UpDownEx {
 

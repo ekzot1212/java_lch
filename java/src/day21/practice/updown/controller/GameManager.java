@@ -99,11 +99,13 @@ public class GameManager implements Program {
 		//sort();
 		list.sort(new Comparator<RecordGame>() {
 
+			
 			@Override
 			public int compare(RecordGame o1, RecordGame o2) {
 				return o1.getCount() - o2.getCount();
 			}
 		});
+		
 	}
 	
 	private void sort() {

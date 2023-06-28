@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
 
-import day21.practice.updown.vo.RecordGame;
+import day21.homework.updown.vo.RecordGame;
+
 
 public class GameManager implements Program {
 
@@ -109,7 +110,6 @@ public class GameManager implements Program {
 		rankCount++;
 		return;
 		}
-		
 		if(rankCount == 5) {
 			if(count < list.get(4).getCount()) {
 				list.remove(4);			//기존 순위 삭제

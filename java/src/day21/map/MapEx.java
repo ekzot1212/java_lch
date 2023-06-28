@@ -27,9 +27,9 @@ public class MapEx {
 		
 		
 		/* keySet을 이용한 반복문. key값들을 Set으로 만들어서 반복 (이게편함) */
-		Set<String> keySet = map2.keySet();		// Set <-- keySet 이용해서 넣기
+		Set<String> keySet = map2.keySet();		// HashMap(선언) -->  Set(.keyset()이용) --> Iterator(.iterator(); 이용)
 		Iterator<String> it = keySet.iterator();	//Iterator <-- keySet 넣기
-		while(it.hasNext()) {			//Iterator의 hasNext() 이용
+		while(it.hasNext()) {			//Iterator의 hasNext() 이용		hasNext() => 다음 값이 있으면 true 리턴함
 			String id = it.next();		//키 값을 가져옴
 			String pw = map2.get(id);	//map에서는 key(id)를 이용해서 value값을 가져옴
 			System.out.println("id : " + id + ", pw : " + pw);
