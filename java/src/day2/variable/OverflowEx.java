@@ -6,13 +6,13 @@ public class OverflowEx {
 		// 오버플로우
 		byte num1 = 127;
 		num1++;
-		System.out.println(num1);
+		System.out.println(num1);	// -128
 
 		
 		// 언더플로우
 		byte num2 = -128;
 		num2--;
-		System.out.println(num2);
+		System.out.println(num2);	//127
 		
 	}
 
