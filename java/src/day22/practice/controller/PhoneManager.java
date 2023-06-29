@@ -53,7 +53,8 @@ public class PhoneManager implements Program {
 			break;
 		case 2:
 			//전화번호 수정
-			System.out.println("수정 할 전화번호 :");
+			System.out.print("수정 할 전화번호 :");
+			phoneNumber = sc.next();
 			modifyNum(phoneNumber);
 			break;
 		case 3:
@@ -83,11 +84,14 @@ public class PhoneManager implements Program {
 			System.out.println("없는 전화번호입니다.");
 			return;
 		}
-		System.out.println("새로운 번호를 입력 : ");
+		System.out.println("새로운 이름 : ");
+		String name = sc.next();
+		System.out.println("새로운 번호 : ");
 		phoneNumber = sc.next();
-		String name = list.get(index).getName();
+		
+		//name = list.get(index).getName();		// 기존 이름
 		//수정하는 클래스메서드 찾아서 바꾸기
-		list.get(index) = new Phone(name, phoneNumber);
+		list.set(index, new Phone(name,phoneNumber));
 	}
 
 	private void search(String phoneNumber) {
