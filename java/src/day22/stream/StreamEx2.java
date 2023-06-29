@@ -20,6 +20,9 @@ public class StreamEx2 {
 		//국어 성적이 60점 이상인 학생들의 이름을 출력 (Stream + 람다)
 		Stream<Student> stream = list.stream();
 		stream
+		/* filter는 매개변수로 Predicate 인터페이스의 객체가 필요
+		 * 익명클래스를 람다식으로 만든 후에 객체를 생성해서 전달
+		 * */
 			.filter(s -> s.getKor() >= 60)		//걸러주는거
 			.map(s -> s.getName())				//타입을 바꿔줌
 			.forEach(name -> System.out.println(name)); //하나씩 꺼내서

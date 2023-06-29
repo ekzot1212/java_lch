@@ -63,7 +63,17 @@ public class StudentManager4 implements Program {
 				System.out.print("검색할 학년을 입력 : ");
 				final int grade1 = sc.nextInt();
 				stream
-					.filter(s -> s.getGrade() == grade1)		
+					.filter(s -> s.getGrade() == grade1)
+					//filter에 있는 매개변수는 위와 아래가 같은 동작
+					.filter(new Predicate<Student>() {
+
+						@Override
+						public boolean test(Student t) {
+							
+							return t.getGrade() == grade1;
+						}
+						
+					})
 					.forEach(s -> System.out.println(s));
 				break;
 			case 3:
