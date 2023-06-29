@@ -1,5 +1,6 @@
 package day22.practice.run;
 
+import day22.practice.controller.PhoneManager;
 import day22.practice.controller.StudentManager3;
 
 public class RambdaStudentEx {
@@ -16,7 +17,12 @@ public class RambdaStudentEx {
 		StudentManager ex = new StudentManager();
 		ex.run();
 		*/
+		/*
 		StudentManager3 ex = new StudentManager3();
+		ex.run();
+		*/
+		
+		PhoneManager ex = new PhoneManager();
 		ex.run();
 	}
 
