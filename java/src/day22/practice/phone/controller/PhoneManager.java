@@ -1,9 +1,10 @@
-package day22.practice.controller;
+package day22.practice.phone.controller;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import day22.practice.vo.Phone;
+import day22.practice.phone.vo.Phone;
+import day22.practice.student.controller.Program;
 
 public class PhoneManager implements Program {
 	Scanner sc = new Scanner(System.in);

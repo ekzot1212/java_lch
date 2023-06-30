@@ -1,10 +1,11 @@
-package day22.practice.controller;
+package day22.practice.student.controller;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.Predicate;
 
-import day22.practice.vo.Student;
+import day22.practice.student.vo.Student;
 
 /*
  * 학생 정보를 출력하는 기능을 구현하세요. 
@@ -14,7 +15,7 @@ import day22.practice.vo.Student;
  * 4. 종료
  */
 
-public class StudentManager implements Program {
+public class StudentManager2 implements Program {
 	
 	List<Student> list = Arrays.asList( // 이게 뭐임?
 			new Student(1, 1, 1, "Hong"), // -> 객체를 만들면 리스트로 넣어줌
@@ -51,28 +52,27 @@ public class StudentManager implements Program {
 
 	@Override
 	public void runMenu(int menu) {
-		int grade= 1, classNum = 1, num =1;
 			switch (menu) {
 			case 1:
-				printAll();
+				print(s -> true);
 				break;
 			case 2:
 				//검색할 학년 입력
 				System.out.print("검색할 학년을 입력 : ");
-				grade = sc.nextInt();
-				printGrade(grade);
+				final int grade1 = sc.nextInt();
+				print(s -> s.getGrade() == grade1);
 				break;
 			case 3:
 				//검색할 학년, 반, 번호 입력
 				System.out.println("학생의 학년, 반, 번호 입력");
 				System.out.print("학년 : ");
-				grade = sc.nextInt();
+				final int grade2 = sc.nextInt();
 				System.out.print("반 : ");
-				classNum = sc.nextInt();
+				final int classNum2 = sc.nextInt();
 				System.out.print("번호 : ");
-				num = sc.nextInt();
+				final int num2 = sc.nextInt();
 				
-				searchStudent(grade,classNum,num);
+				print(s -> s.equals(new Student(grade2, classNum2, num2, "")));
 				break;
 			case 4:
 				System.out.println("종료");
@@ -111,5 +111,13 @@ public class StudentManager implements Program {
 			}
 		}
 		*/
+	}
+	
+	private void print(Predicate<Student> p ) {
+		for(Student tmp : list) {
+			if(p.test(tmp)) {		//test 조건 만족하면 출력 (true반환됨)
+				System.out.println(tmp);
+			}
+		}
 	}
 }

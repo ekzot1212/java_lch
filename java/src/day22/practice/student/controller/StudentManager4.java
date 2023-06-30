@@ -1,11 +1,12 @@
-package day22.practice.controller;
+package day22.practice.student.controller;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-import day22.practice.vo.Student;
+import day22.practice.student.vo.Student;
 
 /*
  * 학생 정보를 출력하는 기능을 구현하세요. 
@@ -15,7 +16,7 @@ import day22.practice.vo.Student;
  * 4. 종료
  */
 
-public class StudentManager2 implements Program {
+public class StudentManager4 implements Program {
 	
 	List<Student> list = Arrays.asList( // 이게 뭐임?
 			new Student(1, 1, 1, "Hong"), // -> 객체를 만들면 리스트로 넣어줌
@@ -52,15 +53,28 @@ public class StudentManager2 implements Program {
 
 	@Override
 	public void runMenu(int menu) {
+		Stream<Student> stream = list.stream();
 			switch (menu) {
 			case 1:
-				print(s -> true);
+				stream.forEach(std -> System.out.println(std));
 				break;
 			case 2:
 				//검색할 학년 입력
 				System.out.print("검색할 학년을 입력 : ");
 				final int grade1 = sc.nextInt();
-				print(s -> s.getGrade() == grade1);
+				stream
+					.filter(s -> s.getGrade() == grade1)
+					//filter에 있는 매개변수는 위와 아래가 같은 동작
+					.filter(new Predicate<Student>() {
+
+						@Override
+						public boolean test(Student t) {
+							
+							return t.getGrade() == grade1;
+						}
+						
+					})
+					.forEach(s -> System.out.println(s));
 				break;
 			case 3:
 				//검색할 학년, 반, 번호 입력
@@ -71,8 +85,9 @@ public class StudentManager2 implements Program {
 				final int classNum2 = sc.nextInt();
 				System.out.print("번호 : ");
 				final int num2 = sc.nextInt();
-				
-				print(s -> s.equals(new Student(grade2, classNum2, num2, "")));
+				stream
+				.filter(s -> s.equals(new Student(grade2, classNum2, num2, "")))		//걸러주는거
+				.forEach(s -> System.out.println(s));
 				break;
 			case 4:
 				System.out.println("종료");

@@ -1,12 +1,11 @@
-package day22.practice.controller;
+package day22.practice.student.controller;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.function.Predicate;
 import java.util.stream.Stream;
 
-import day22.practice.vo.Student;
+import day22.practice.student.vo.Student;
 
 /*
  * 학생 정보를 출력하는 기능을 구현하세요. 
@@ -16,7 +15,7 @@ import day22.practice.vo.Student;
  * 4. 종료
  */
 
-public class StudentManager4 implements Program {
+public class StudentManager3 implements Program {
 	
 	List<Student> list = Arrays.asList( // 이게 뭐임?
 			new Student(1, 1, 1, "Hong"), // -> 객체를 만들면 리스트로 넣어줌
@@ -24,6 +23,8 @@ public class StudentManager4 implements Program {
 			new Student(2, 1, 1, "Park"), 
 			new Student(3, 1, 1, "Lee"),
 			new Student(3, 3, 2, "Kim"));
+	
+	Stream<Student> stream = list.stream();
 	
 	Scanner sc = new Scanner(System.in);
 
@@ -53,41 +54,28 @@ public class StudentManager4 implements Program {
 
 	@Override
 	public void runMenu(int menu) {
-		Stream<Student> stream = list.stream();
+		int grade= 1, classNum = 1, num =1;
 			switch (menu) {
 			case 1:
-				stream.forEach(std -> System.out.println(std));
+				printAll();
 				break;
 			case 2:
 				//검색할 학년 입력
 				System.out.print("검색할 학년을 입력 : ");
-				final int grade1 = sc.nextInt();
-				stream
-					.filter(s -> s.getGrade() == grade1)
-					//filter에 있는 매개변수는 위와 아래가 같은 동작
-					.filter(new Predicate<Student>() {
-
-						@Override
-						public boolean test(Student t) {
-							
-							return t.getGrade() == grade1;
-						}
-						
-					})
-					.forEach(s -> System.out.println(s));
+				grade = sc.nextInt();
+				printGrade(grade);
 				break;
 			case 3:
 				//검색할 학년, 반, 번호 입력
 				System.out.println("학생의 학년, 반, 번호 입력");
 				System.out.print("학년 : ");
-				final int grade2 = sc.nextInt();
+				grade = sc.nextInt();
 				System.out.print("반 : ");
-				final int classNum2 = sc.nextInt();
+				classNum = sc.nextInt();
 				System.out.print("번호 : ");
-				final int num2 = sc.nextInt();
-				stream
-				.filter(s -> s.equals(new Student(grade2, classNum2, num2, "")))		//걸러주는거
-				.forEach(s -> System.out.println(s));
+				num = sc.nextInt();
+				
+				searchStudent(grade,classNum,num);
 				break;
 			case 4:
 				System.out.println("종료");
@@ -97,25 +85,26 @@ public class StudentManager4 implements Program {
 	}
 	
 	public void printAll() {
-		for (Student tmp : list) {
-			System.out.println(tmp);
-		}
+		stream = list.stream();
+		stream.forEach(s -> System.out.println(s));
 	}
 
 	public void printGrade(int grade) {
-		for (Student tmp : list) {
-			if(tmp.getGrade() == grade)
-			System.out.println(tmp);
-		}
+		stream = list.stream();
+		stream
+		.filter(s -> s.getGrade() == grade)		//걸러주는거
+		//.map(s -> s.getName())				//타입을 바꿔줌
+		.forEach(s -> System.out.println(s));
 	}
 	
 	public void searchStudent(int grade,int classNum,int num) {
 		
-		for (Student tmp : list) {
-			if(tmp.equals(new Student(grade, classNum, num, " "))) {
-				System.out.println(tmp);
-			}
-		}
+		stream = list.stream();
+		stream
+		.filter(s -> s.getGrade() == grade
+				&& s.getClassNum() == classNum
+				&& s.getNum() == num)		//걸러주는거
+		.forEach(s -> System.out.println(s));
 		
 		/*
 		for (Student tmp : list) {
@@ -126,13 +115,5 @@ public class StudentManager4 implements Program {
 			}
 		}
 		*/
-	}
-	
-	private void print(Predicate<Student> p ) {
-		for(Student tmp : list) {
-			if(p.test(tmp)) {		//test 조건 만족하면 출력 (true반환됨)
-				System.out.println(tmp);
-			}
-		}
 	}
 }
