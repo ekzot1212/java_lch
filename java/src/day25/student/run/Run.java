@@ -1,6 +1,6 @@
 package day25.student.run;
 
-import practice.university.controller.StudentController;
+import day25.student.controller.StudentController;
 
 public class Run {
 

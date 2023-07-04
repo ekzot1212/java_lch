@@ -3,8 +3,9 @@ package day25.student.controller;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import practice.university.run.Program;
-import practice.university.vo.Student;
+import day25.student.run.Program;
+import day25.student.vo.Student;
+
 
 public class StudentController implements Program{
 	Scanner sc = new Scanner(System.in);
