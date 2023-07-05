@@ -147,12 +147,8 @@ public class LibraryController {
 		
 		Book book = new Book(userNum, null, null, null);
 		int bookIndex = bookList.indexOf(book);
-		String num = bookList.get(bookIndex).getNum();
-		String title = bookList.get(bookIndex).getTitle();
-		String author = bookList.get(bookIndex).getAuthor();
-		String isbn = bookList.get(bookIndex).getIsbn();
 		// 왜 대여리스트 객체 생성해서 비교하는대 비교가 안됨??????????????
-		LoanBrowsing lb = new LoanBrowsing(new Book(num,title,author,isbn), null, 0);
+		LoanBrowsing lb = new LoanBrowsing(bookList.get(bookIndex), null, 0);
 		
 		int loanIndex = loanlist.indexOf(lb);
 		System.out.println(lb);
