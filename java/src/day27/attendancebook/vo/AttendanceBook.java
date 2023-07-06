@@ -1,5 +1,13 @@
 package day27.attendancebook.vo;
 
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,18 +21,80 @@ import lombok.Data;
 // 날짜별로
 // Attendance(학생, 출석여부)를 가짐
 @Data
-public class AttendanceBook {
-	
-	Scanner sc = new Scanner(System.in);
-	
+public class AttendanceBook implements Serializable  {
+	private static final long serialVersionUID = 3439681532760663381L;
+
+	transient Scanner sc = new Scanner(System.in);		//Scanner 클래스는 직렬화가 안되어 있기 때문에 예외처리
+														//transient = 예외함
 	private List<Attendance> list = new ArrayList<>();
 	private List<Student> stdList = new ArrayList<>();
 
-	
-	public void attendance() {
-		
-	}
+	public void saveStudent(String fileName) {
+		// 학생 정보를 저장 -> 리스트 -> 하나씩 꺼내서 저장
+		// 저장 -> OutputStream
+		// 읽어오기 편하려고 객체 단위로 저장 -> ObjectOutputStream
+		// FileOutputStream = 기반 스트림, ObjectOutputStream의 상위
 
+		try (FileOutputStream fos = new FileOutputStream(fileName);
+				ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+			for (Student tmp : stdList) {
+				oos.writeObject(tmp); // 이거 쓸려면 Student클래스 Serializable 인터페이스 구현해야 함.
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void loadStudent(String fileName) {
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
+			while (true) {
+				Student tmp = (Student)ois.readObject();
+				stdList.add(tmp);
+
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("불러올 파일이 없습니다.");
+		} catch (EOFException e) {
+			System.out.println("불러오기 완료 !");
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+//ObjectInputStream을 이용하여 객체단위로 읽어올 때 클래스가 Serializable 인터페이스를 구현하지 않으면 발생
+			System.out.println("Student 클래스를 찾을 수 없습니다.");
+		}
+		System.out.println(stdList);
+	}
+	
+	
+	public void saveAttendance(String fileName) {
+		try (FileOutputStream fos = new FileOutputStream(fileName);
+				ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+			for (Attendance tmp : list) {
+				oos.writeObject(tmp);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void loadAttendance(String fileName) {
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
+			while (true) {
+				Attendance tmp = (Attendance)ois.readObject();
+				list.add(tmp);
+
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("불러올 파일이 없습니다.");
+		} catch (EOFException e) {
+			System.out.println("불러오기 완료 !");
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			System.out.println("Attendance 클래스를 찾을 수 없습니다.");
+		}
+	}
+	
 
 	public boolean insertStudent(Student std) {
 		// 이미 등록된 학번이면 등록 실패 : 학생 클래스가 학번을 통해서 같은지 확인할 수 있어야 함.
@@ -78,5 +148,7 @@ public class AttendanceBook {
 			System.out.println(tmp);
 		}
 	}
+	
+	
 	
 }

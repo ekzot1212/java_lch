@@ -1,22 +1,44 @@
 package day27.attendancebook.controller;
 
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import day26.library.vo.LoanBrowsing;
 import day27.attendancebook.vo.Attendance;
 import day27.attendancebook.vo.AttendanceBook;
 import day27.attendancebook.vo.Student;
 
-public class AttendanceController implements Program {
-
-	
+public class AttendanceController implements Program{
 	private Scanner sc = new Scanner(System.in);
 	private AttendanceBook book = new AttendanceBook();
 	private final static int EXIT = 4;
 	
+	//파일 저장 내가 한 것 
+	/*
+	String stdFileName = "java/src/day27/attendancebook/student.txt";
+	String fileName = "java/src/day27/attendancebook/attendance.txt";
+	
+	public void save() {
+		book.saveStudent(stdFileName);
+		book.saveAttendance(fileName);
+	}
+	
+	public void load() {
+		book.loadStudent(stdFileName);
+		book.loadAttendance(fileName);
+	}
+	*/
 	
 	@Override
 	public void printMenu() {
@@ -29,9 +51,9 @@ public class AttendanceController implements Program {
 	}
 	@Override
 	public void run() {
+		String fileName = "java/src/day27/attendancebook/attendancebook.txt";
 		
-		
-		//load();
+		load(fileName);
 		
 		int menu;
 		do {
@@ -41,9 +63,33 @@ public class AttendanceController implements Program {
 			runMenu(menu);
 		}while(menu != EXIT);
 		
-		//save();
+		save(fileName);
 	}
 
+	
+	void load(String fileName) {
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
+				book = (AttendanceBook)ois.readObject(); //
+		} catch (FileNotFoundException e) {
+			System.out.println("불러올 파일이 없습니다.");
+		} catch (EOFException e) {
+			System.out.println("불러오기 완료 !");
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			System.out.println("AttendanceBook 클래스를 찾을 수 없습니다.");
+		}
+	}
+	
+	void save(String fileName) {
+		try (FileOutputStream fos = new FileOutputStream(fileName);
+				ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+				oos.writeObject(book); //
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	@Override
 	public void runMenu(int menu) {
 		switch (menu) {
@@ -64,7 +110,6 @@ public class AttendanceController implements Program {
 
 		}
 	}
-	
 	private void insertStudent() {
 		//정보(학번, 이름) 입력
 		System.out.println("학번 : ");
@@ -88,7 +133,6 @@ public class AttendanceController implements Program {
 		}
 		
 	}
-	
 	private void attedndanceCheck() {
 		//날짜 입력
 		//SimpleDateFormat을 이용해서
@@ -149,32 +193,7 @@ public class AttendanceController implements Program {
 
 	
 	
-	/*
-	@Override
-	public void load() {
-		try(FileInputStream fis = new FileInputStream("phone_book.txt");
-			ObjectInputStream ois = new ObjectInputStream(fis)){
+	
 
-			pb = (PhoneBook)ois.readObject();		//이게 왜 pb에 들어가는 것임?
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-
-	@Override
-	public void save() {
-		try(FileOutputStream fos = new FileOutputStream("phone_book.txt");
-			ObjectOutputStream oos = new ObjectOutputStream(fos)){
-			oos.writeObject(pb);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-	}*/
 
 }

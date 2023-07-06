@@ -1,16 +1,17 @@
 package day27.attendancebook.vo;
 
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-public class Student  {
+public class Student implements Serializable {
+	private static final long serialVersionUID = -5545144424168214352L;
 	private String num;
 	private String name;
-	
 	
 	public Student(String num, String name) {
 		super();

@@ -1,5 +1,6 @@
 package day27.attendancebook.vo;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
@@ -8,8 +9,8 @@ import lombok.Data;
 
 //-출석 클래스 (학생 한명이 특정날에 출석했는지 알 수 있는 클래스)
 @Data
-public class Attendance {
-	
+public class Attendance implements Serializable {
+	private static final long serialVersionUID = -6303686928394236418L;
 	private Date date;
 	private Student student;
 	private boolean attendance;
