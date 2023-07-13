@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이분할 예제</title>
+	<style>
+		/* 
+		calc함수
+			- 다향한 단위의 값들을 계산해주는 함수
+			- 연산자 앞 뒤로는 공백을 추가
+		*/
+		.container{
+			width: 500px; height: 500px; padding: 10px;
+			box-sizing: border-box; background-color: rgba(54, 242, 7, 0.634);
+		}
+		.box{
+			float: left; background-color: rgb(125, 133, 127);
+			width: calc((100% - 2 * 10px) / 3); height: 100%;
+		}
+		/* +이용해서 두번째 박스부터 설정 가능 */
+		.box+.box{
+			margin-left: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box box1">1</div>
+		<div class="box box2">2</div>
+		<div class="box box3">3</div>
+	</div>
+</body>
+</html>
