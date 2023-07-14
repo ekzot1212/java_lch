@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+<!-- 
+	colgroup
+	- col태그들을 모아놓은 태그
+	col
+	- 같은 항목끼리 스타일을 같게 적용하고 싶을 때 사용하는 태그
+-->
+	<style>
+		table, tr, td, th{
+			border: 1px solid black;
+			border-collapse: collapse;
+			border-width: 1px 0px;
+		}
+		.title{
+			width: 150px;
+			text-align: center;
+			height: 50px;
+		}
+		.name{
+			text-align: center;
+			width: 130px;
+		}
+		.score{
+			text-align: center;
+			width: 100px;
+		}
+		.number{
+			text-align: center;
+			width: 30px;
+		}
+		.box:hover{
+			background-color: aqua;
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<tr class="">
+			<th class="number">번호</th>
+			<th class="title">과목</th>
+			<th class="name">이름</th>
+			<th class="score">점수</th>
+		</tr>
+		<tr class="box">
+			<td class="number">2</td>
+			<td class="title">HTML</td>
+			<td class="name">홍길동</td>
+			<td class="score">100</td>
+		</tr>
+		<tr class="box">
+			<td class="number">1</td>
+			<td class="title">HTML</td>
+			<td class="name">임꺽정</td>
+			<td class="score">90</td>
+		</tr>
+
+	</table>
+</body>
+</html>

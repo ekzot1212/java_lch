@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		/* 기본 셋팅 */
+		*{ padding: 0; margin : 0; color: black;}
+		ul{ list-style: none;}
+		a{ text-decoration: none;}
+
+		.menu-list{
+			width: 300px; height: 50px; 
+		}
+		.menu-item{
+			width: 100px; height: 100%; float: left;
+		}
+		.menu-link{
+			/* 디스플레이 블락으로 해야 a태그에 너비높이 지정가능 */
+			width: 100%; height: 100%; display: block;
+			text-align: center; line-height: 44px;
+			font-size: 24px; font-weight: bold;
+			/* 테두리 지정하면 부모의 크기를 벗어날 수 있어서 border-box로 설정 */
+			border: 3px solid black; box-sizing: border-box;
+
+		}
+		.menu-item~.menu-item{
+			margin-left: -3px; 
+		}
+		.submenu-link{
+			width: 100%; height: 100%; display: block;
+			text-align: center; line-height: 44px;
+			border: 3px solid black; font-size: 24px;
+			box-sizing: border-box;
+		}
+		.submenu-list{
+			margin-top: -3px; 
+			/* 디스플레이 : 논 으로 숨기기 */
+			display: none;
+		}
+		.submenu-item+.submenu-item{
+			margin-top: -3px;
+		}
+		.menu-item:hover .submenu-list{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<!-- ul안에 li , li안에 서브리스트ul -> li로 다시 서브메뉴들 -->
+	<nav>
+		<ul class="menu-list">
+			<li class="menu-item">
+				<a href="#" class="menu-link">메뉴1</a>
+				<ul class="submenu-list">
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">서브1-1</a>
+					</li>
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">서브1-2</a>
+					</li>
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">서브1-3</a>
+					</li>
+				</ul>
+			</li>
+			<li class="menu-item">
+				<a href="#" class="menu-link">메뉴2</a>
+				<ul class="submenu-list">
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">서브2-1</a>
+					</li>
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">서브2-2</a>
+					</li>
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">서브2-3</a>
+					</li>
+				</ul>
+			</li><li class="menu-item">
+				<a href="#" class="menu-link">메뉴3</a>
+				<ul class="submenu-list">
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">서브3-1</a>
+					</li>
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">서브3-2</a>
+					</li>
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">서브3-3</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+</body>
+</html>
