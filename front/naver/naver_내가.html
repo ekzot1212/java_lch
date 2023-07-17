@@ -55,8 +55,10 @@
 			left: 50%; transform: translateX(-50%);
 			border: 1px solid #03c75a; /* 네이버 기본 검색창 테두리 색, 특별한 날마다 다를 수 있음 */
 			border-radius: 33px; top: 64px;
-
-
+		}
+		/* 내가추가 검색창 호버하면 그림자 */
+		#box_search:hover{
+			box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
 		}
 		#box_search .box-logo{
 			float: left; width: 80px;
@@ -74,13 +76,17 @@
 
 		/* 검색창 */
 		#box_search .box-search-input .input-search{
-			padding: 17px 0 ; width: 480px; float: left;
+			padding: 17px 0 ; width: 480px; float: left; 
 			height: 58px; border: 0; outline: 0; 
 			box-sizing: border-box; 
 			line-height: 24px; font-weight: bold; font-size: 24px; color:  #000;
 		}
+		/* 내가 추가 검색창 클릭하면 글자 나타나게 */
 		#box_search .box-search-input .input-search::placeholder{
-			color: #f5f6f7;
+			color: #fff;
+		}
+		#box_search .box-search-input .input-search:focus::placeholder{
+			color: #f5F6F7;
 		}
 		/* 검색버튼 */
 		#box_search .box-search-input .btn-search{
@@ -205,7 +211,7 @@
 			position: absolute; top: 18px; right: 42px;
 			display: block;
 		}
-		.pay-area .link-pay::before{
+		.pay-area .link-pay:hover::before{
 			content: ''; display: block; 
 			position: absolute; top: 1px; left: 1px; width: 44px; height: 44px;
 			background-color: #f5f7f8;
@@ -227,7 +233,7 @@
 			display: block; ;
 		}
 
-		.notify-area .btn-notify::before{
+		.notify-area .btn-notify:hover::before{
 			content: ''; display: block; 
 			position: absolute; top: 1px; left: 1px; width: 44px; height: 44px;
 			background-color: #f5f7f8;
@@ -254,7 +260,7 @@
 			margin: 0 auto;
 
 			/* 아래는 나중에 삭제 할 속성 */
-			background-color: red;
+			background-color: darkkhaki;
 			height: 500px;
 		}
 
@@ -306,7 +312,7 @@
 				<fieldset>
 					<legend class="blind">검색</legend>
 					<div class="box-input clearfix">
-						<input type="text" class="input-search" placeholder="검색어를 입력해 주세요.">
+						<input type="text" class="input-search" placeholder="검색어를 입력해 주세요." >
 					</div>
 					<button class="btn-search">
 						<span class="icon-search"></span>

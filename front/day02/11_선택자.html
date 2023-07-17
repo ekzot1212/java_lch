@@ -49,9 +49,9 @@
 	[class$=item]{} 
 	/* 
 	class가 item으로 끝나는 요소들을 선택
-	class="first"
+	class="first"X
 	class="first-item"0
-	class="item first"
+	class="item first"X
 	class="first item"0
 	*/
 	[class*=first]{}
@@ -62,30 +62,28 @@
 	class="item first"0
 	class="first item"0
 	*/
-	/* 
-	아이디가 menu인 요소의 자손 요소 중, a태그를 찾는 선택자
-	*/
+
+	/* 아이디가 menu인 요소의 자손 요소 중, a태그를 찾는 선택자	*/
 	#menu a{}
-	/* 
-		아이디가 menu인 요소의 자식 중 클래스명이 menu-item인 요소를 찾는 선택자
-	*/
+
+	/* 아이디가 menu인 요소의 자식 중 클래스명이 menu-item인 요소를 찾는 선택자	*/
 	#menu > .menu-item{}
+
 	/* 
 	클래스명이 first인 요소 뒤에 있는 클래스명이 menu-item인 모든 요소를 찾는 선택자 
-	<li class="menu-item first">를 제외한 나머지 .menu-item요소들
-	*/
+	<li class="menu-item first">를 제외한 나머지 .menu-item요소들 */
 	.first~.menu-item{} /* 선택된 요소가 2개, 메뉴2, 메뉴3*/
-	/* 
-	클래스명이 first인 요소 다음에 클래스명이 menu-item인 요소를 찾는 선택자
-	 */
+
+	/* 클래스명이 first인 요소 다음에 클래스명이 menu-item인 요소를 찾는 선택자 */
 	.first+.menu-item{} /* 선택된 요소가 1개, 메뉴2*/
-	/* 
-	메뉴1에 마우스를 올렸을 때 선택자
-	*/
+
+	/* 메뉴1에 마우스를 올렸을 때 선택자 */
 	.first:hover{}
 	.first-link:hover{}
+	
 	/* checked 상태인 checkbox를 찾는 선택자 */
 	input[type:checkbox]:checked{}
+	
 	</style>
 </head>
 <body>
