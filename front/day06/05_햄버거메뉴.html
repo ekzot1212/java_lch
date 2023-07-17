@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>햄버거 메뉴 예제</title>
+	<style>
+		.ham-menu{
+			width: 30px; height: 30px;background-color: bisque;
+			/* a태그는 인라인태그라서 너비 지정 불가능 그래서 블럭으로 지정 */
+			display: inline-block; position: relative; 
+		}
+		.ham-menu .bar{
+			width: 100%; height: 5px; background-color: black; border-radius: 10px;
+			/* span 태그는 인라인 태그라 display:block 해줘야 너비가 지정 됨. */
+			display: block; position: absolute;
+			transition: transform .2s;
+		}
+		.ham-menu .bar.bar-top{ top: 0;}
+		.ham-menu .bar.bar-mid{
+			top: 50%; margin-top: -2px;
+		}
+		.ham-menu .bar.bar-bottom{
+			bottom: 0; 
+		}
+		/* 아이디가 ham인 요소가 체크되었을때 뒤에있는 bar-top */
+		.ham-menu #ham:checked~.bar-top{
+			transform-origin: 0% 0%;
+			transform: rotate(37deg); width: calc(100% * 1.43);
+		}
+		.ham-menu #ham:checked~.bar-bottom{
+			transform-origin: 0% 100%;
+			transform: rotate(-37deg); width: calc(100% * 1.43);
+		}
+		.ham-menu #ham:checked~.bar-mid{
+			transform: scaleY(0);
+		}
+		#ham{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<label href="#" class="ham-menu">
+		<input type="checkbox" id="ham">
+		<span class="bar bar-top"></span>
+		<span class="bar bar-mid"></span>
+		<span class="bar bar-bottom"></span>
+	</label>
+</body>
+</html>
