@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>반응형 메뉴</title>
+	<style>
+		nav{
+			position: relative;
+		}
+		.list-menu{
+			border: 3px solid black; list-style: none; padding: 0; margin: 0;
+		}
+		.list-menu::after{
+			content: ''; display: block; clear: both;
+		}
+		.item-menu{
+			float: left; width: 33.33%;
+		}
+		.item-menu+.item-menu{
+			border-left: 3px solid black; margin-left: -3px;
+		}
+		.link-menu{
+			display: block; height: 50px; text-align: center; line-height: 50px; font-size: 20px;
+			color: black; text-decoration: none;
+		}
+		@media screen and (max-width:900px) {
+			.list-menu{
+				position: absolute;
+				top: 0; right: 0;
+			}
+			.item-menu{
+				width: 400px; float: none;
+			}
+			.item-menu+.item-menu{
+				border-left: 0; border-top: 3px solid black; margin-left: 0;
+			}
+			/* 메뉴숨기기 */
+			.list-menu{
+				/* position: absolute; width: 1px; height: 1px; margin: -1px; */
+				/* overflow: hidden; border: 0; */
+				display: none;
+			}
+			.ham-menu{
+				display: none;
+			}
+		}
+
+		@media screen and (min-width:900px){
+			
+		}
+
+		/* 햄버거 스타일 */
+		.ham-menu{
+			width: 30px; height: 30px;background-color: bisque;
+			/* a태그는 인라인태그라서 너비 지정 불가능 그래서 블럭으로 지정 */
+			display: inline-block; position: relative; 
+			float: right;
+		}
+		.ham-menu .bar{
+			width: 100%; height: 5px; background-color: black; border-radius: 10px;
+			/* span 태그는 인라인 태그라 display:block 해줘야 너비가 지정 됨. */
+			display: block; position: absolute;
+			transition: transform .2s;
+		}
+		.ham-menu .bar.bar-top{ top: 0;}
+		.ham-menu .bar.bar-mid{
+			top: 50%; margin-top: -2px;
+		}
+		.ham-menu .bar.bar-bottom{
+			bottom: 0; 
+		}
+		/* 아이디가 ham인 요소가 체크되었을때 뒤에있는 bar-top */
+		.ham-menu #ham:checked~.bar-top{
+			transform-origin: 0% 0%;
+			transform: rotate(37deg); width: calc(100% * 1.43);
+		}
+		.ham-menu #ham:checked~.bar-bottom{
+			transform-origin: 0% 100%;
+			transform: rotate(-37deg); width: calc(100% * 1.43);
+		}
+		.ham-menu #ham:checked~.bar-mid{
+			transform: scaleY(0);
+		}
+		#ham{
+			display: none;
+		}
+
+		.blind{
+		position: absolute; width: 1px; height: 1px; margin: -1px;
+		overflow: hidden; 
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<ul class="list-menu">
+			<li class="item-menu">
+				<a href="#" class="link-menu">메뉴1</a>
+			</li>
+			<li class="item-menu">
+				<a href="#" class="link-menu">메뉴2</a>
+			</li>
+			<li class="item-menu">
+				<a href="#" class="link-menu">메뉴3</a>
+			</li>
+		</ul>
+	</nav>
+	<!-- 햄버거 -->
+	<label href="#" class="ham-menu">
+		<input type="checkbox" id="ham">
+		<span class="bar bar-top"></span>
+		<span class="bar bar-mid"></span>
+		<span class="bar bar-bottom"></span>
+	</label>
+</body>
+</html>
