@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>그리드 예제</title>
+	<style>
+		.grid-container{
+			display: grid;
+			/* 한줄에 요소를 3개 크기는 1:1:1 비율로 */
+			/* grid-template-columns: 1fr 1fr 1fr; */
+			/* grid-template-columns: repeat(3, 1fr); */
+			/* auto-fit은 남는공간 없이 자동으로 채워줌 */
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			column-gap: 30px;
+			row-gap: 30px;
+			/* 행 마다 100px 차지함 */
+			/* grid-template-rows: 100px 100px 100px; */
+			/* grid-template-rows: repeat(3, 100px); */
+
+		}
+		.box{
+			height: 50px; background-color: pink;
+		}
+		.box:nth-child(2n){
+			background-color: bisque;
+		}
+	</style>
+</head>
+<body>
+	<div class="grid-container">
+		<div class="box">1</div>
+		<div class="box">2</div>
+		<div class="box">3</div>
+		<div class="box">4</div>
+		<div class="box">5</div>
+		<div class="box">6</div>
+	</div>
+</body>
+</html>
