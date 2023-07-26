@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>jquery 요소 선택</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box{
+			background-color: tomato; height: 300px;
+		}
+	</style>
+</head>
+<body>
+	<button class="btn">접기</button>
+	<div class="box"></div>
+	<script>
+		/*
+		$('선택자').html(html코드) : 요소의 html 코드를 덮어쓰기
+		$('선택자').text(값) : 요소의 텍스트를 덮어쓰기
+		$('선택자').val(값) : 요소의 value값을 덮어쓰기. 단, 요소가 input,select,textarea태그인 경우
+		*/
+		$(document).on('click','.btn',function(){
+			$('.box').toggle();
+			if($('.btn').text()=='펼치기'){
+				$('.btn').text('접기')
+			}else{
+				$('.btn').text('펼치기');
+			}
+		});
+	</script>
+</body>
+</html>

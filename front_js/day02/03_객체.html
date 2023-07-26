@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>객체 예제</title>
+</head>
+<body>
+	<script>
+		/*
+		객체는 속성과 메서드로 구성
+		*/
+		var student = {
+			name : '홍길동',	//따옴표 안써도 됨
+			'kor' : 100,		//공백이 있으면 따옴표 무조건 묶어야됨
+			toString : function(){
+				return this.name + ' : ' + this.kor;
+			}
+		};
+		console.log(student.toString());
+
+		//student 생성자
+		function Student(name,kor){
+			return{
+				name : name,
+				kor : kor,
+				toString : function(){
+					return this.name + ' : ' + this.kor;
+				}
+			}
+		}
+
+		let std1 = Student('홍길동',100);
+		let std2 = Student('임걱정',90);
+		console.log(std1.toString());
+		console.log(std2.toString());
+		console.log(std1.name);			//.으로 접근하기
+		console.log(std1['name']);		// 대괄호로 접근하기
+	</script>
+</body>
+</html>

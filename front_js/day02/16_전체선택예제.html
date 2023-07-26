@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<input type="checkbox" name="all-check" id="">전체선택 <br> 
+	<input type="checkbox" name="check" class="check">1 <br> 
+	<input type="checkbox" name="check" class="check">2 <br>
+	<script>
+		$('[name=all-check]').click(function(){
+			if($('[name=all-check]').prop('checked') == true){
+				$('.check').prop('checked',true);
+			};
+			if($('[name=all-check]').prop('checked') != true){
+				$('.check').prop('checked',false);
+			};
+		});
+	</script> 
+</body>
+</html>

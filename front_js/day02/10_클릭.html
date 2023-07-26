@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>페이지</title>
+	<style>
+		.box{
+			display: inline-block;
+			width: 30px; height: 30px;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn1"><</button>
+	<div class="box" id="box"></div>
+	<button id="btn2">></button>
+	<script>
+		var num = 1, max = 6;
+		box.innerText = `1/6`;
+		let btn2 = document.getElementById('btn2');
+			btn2.onclick = function(){
+				if(num<6){
+					num++;
+				}
+				box.innerText = `${num}/${max}`;
+			}
+		let btn1 = document.getElementById('btn1');
+		btn1.onclick = function(){
+			if(num>1){
+				num--;
+			}
+			box.innerText = `${num}/${max}`;
+		}
+		
+	</script>
+</body>
+</html>
