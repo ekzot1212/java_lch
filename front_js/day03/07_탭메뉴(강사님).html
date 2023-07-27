@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box{
+			width: 500px; height: 300px; background-color: crimson;
+		}
+		.box2{
+			background-color: aquamarine;
+		}
+		.box3{
+			background-color: gold;
+		}
+	</style>
+</head>
+<body>
+	<!-- data-땡땡땡 : 원하는 데이터를 넘겨줄수있다. -->
+	<button class="btn btn1" data-target=".box1">빨간색</button>
+	<button class="btn btn2" data-target=".box2">파란색</button>
+	<button class="btn btn3" data-target=".box3">노란색</button>
+		<div class="box box1"></div>
+		<div class="box box2"></div>
+		<div class="box box3"></div>
+		<script>
+			// attr : 표준속성이 아닌거 
+			// prop : 표준속성 (체크드 등등)
+			$('.box').hide();
+			
+			$('.btn').click(function(){
+				let target = $(this).attr('data-target');
+				$('.box').hide();
+				$(target).show();
+			});
+		</script>
+</body>
+</html>

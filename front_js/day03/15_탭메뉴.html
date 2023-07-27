@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		*{ padding: 0; margin: 0;}
+		.list-menu{
+			list-style: none; border: 3px solid black;
+			display: flex;
+		}
+.item-menu{
+	width: 100%; 
+}
+.item-menu+.item-menu{
+	border-left: 3px solid black;
+}
+.item-menu:nth-child(1).active{ background-color: red; color : #fff;}
+.item-menu:nth-child(2).active{ background-color: blue; color : #fff;}
+.item-menu:nth-child(3).active{ background-color: yellow; color : #fff;}
+.link-menu{
+	display: block; text-align: center; height: 50px; line-height: 50px;
+	font-size: 25px; font-weight: bold; color: inherit;
+	text-decoration: none;
+}
+.list-box{
+	margin-top: 20px;
+}
+.item-box{
+	height: 300px; display: none;
+}
+.box1{ background-color: red;}
+.box2{ background-color: blue;}
+.box3{ background-color: yellow;}
+/* 화살표 */
+.btn-prev,
+		.btn-next{
+			width: 30px; height: 30px; background-color: #fff; 
+			border: 1px solid black; cursor: pointer;
+		}
+		.box-page{
+			display: flex; justify-content: center;
+		}
+		.box-page-num{
+			padding: 0 5px; line-height: 28px; font-size: 18px;
+		}
+	</style>
+</head>
+<body>
+
+	<ul class="list-menu">
+		<li class="item-menu" data-target=".box1">
+			<a href="#" class="link-menu">메뉴1</a>
+		</li>
+		<li class="item-menu" data-target=".box2">
+			<a href="#" class="link-menu">메뉴2</a>
+		</li>
+		<li class="item-menu" data-target=".box3">
+			<a href="#" class="link-menu">메뉴3</a>
+		</li>
+	</ul>
+	<!-- 화살표 -->
+	<div class="box-page">
+		<button class="btn btn-prev"><</button>
+		<div class="box-page-num">
+			<span class="page-current">1</span>
+			<span class="page-max">/ 3</span>
+		</div>
+		<button class="btn btn-next" onclick="next();">></button>
+	</div>
+
+	<ul class="list-box">
+		<li class="item-box box1"></li>
+		<li class="item-box box2"></li>
+		<li class="item-box box3"></li>
+	</ul>
+	<script>
+		$('.item-menu').click(function(){
+			//박스
+			let target = $(this).attr('data-target');
+			$('.item-box').hide();
+			$(target).show();
+			//메뉴
+			$('.item-menu').removeClass('active');
+			$(this).addClass('active');
+		});
+		
+		// 화살표
+		let currentPage = 1;
+		const MAX_PAGE = 3;
+		let btnPrev = document.querySelector('.btn-prev');
+		let btnNext = document.querySelector('.btn-next');
+		let pageCurrent = document.querySelector('.page-current');
+		btnPrev.onclick = ()=>{		//1회용 함수 대신에 에로우 문법
+			currentPage--;
+			currentPage = (currentPage == 0 ? MAX_PAGE : currentPage);
+			pageCurrent.innerText = currentPage;
+
+			$('.item-menu').eq(currentPage-1).click();
+			/* if(currentPage == 0){
+				currentPage = MAX_PAGE;
+			}*/
+		}
+		function next(){
+			currentPage = (++currentPage > MAX_PAGE ? 1 : currentPage);
+			pageCurrent.innerText = currentPage;
+			$('.item-menu').eq(currentPage-1).click();
+		}
+
+		</script>
+</body>
+</html>
