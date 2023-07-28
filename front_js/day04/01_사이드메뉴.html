@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>jquery 애니메이션</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.btn{
+			width: 50px; height: 50px; position: absolute; top: 0; right: 0;
+			border: 0; cursor: pointer;
+		}
+		.box{
+			position: absolute;
+			top: 50px; right: -190px;
+			background-color: aquamarine; width: 200px; height: 400px;
+		}
+	</style>
+</head>
+<body>
+	<button class="btn">클릭</button>
+	<div class="box"></div>
+	<script>
+		let isShow = 0;
+		$(document).on('click','.btn',function(){
+		// $('.btn').click(function(){
+			if(isShow == 0){
+				isShow = 1;
+				$('.box').animate({left : '-=200px'}, 300, function(){
+				})
+			}else{
+				isShow = 0;
+				$('.box').animate({left : '+=200px'}, 300, function(){
+				})
+			}
+		});
+	</script>
+</body>
+</html>

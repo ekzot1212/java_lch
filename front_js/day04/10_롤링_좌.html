@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box{
+			width: 200px;
+			height: 50px; border: 3px solid black; overflow: hidden;
+		}
+		.list{
+			width: 609px; display: flex; flex-wrap: nowrap;
+			list-style: none; margin: 0; padding: 0;
+		}
+		.item{
+			width: 203px; 
+			height: 50px; background-color: wheat;
+		}
+		.bg-2{background-color: lightcoral;}
+		.bg-3{background-color: mediumturquoise;}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul class="list">
+			<li class="item">1</li>
+			<li class="item bg-2">2</li>
+			<li class="item bg-3">3</li>
+		</ul>
+	</div>
+	<script>
+		$('.box').hover(function(){
+			//롤링 멈춤
+			clearInterval(id);
+		}, function(){
+			//롤링 시작
+			id = rolling();
+		});
+		let id = rolling();
+
+		function rolling(){
+			return setInterval(()=>{
+			if($('.item').is(':animated')){	//애니메이션 중에는 작동하지 않도록(안정성을 위해)
+				return;
+			}
+			$('.item').first().animate({
+				'margin-left' : '-203px'
+			},1200, function(){
+				$(this).detach().appendTo('.list').removeAttr('style');		//떼서 리스트의 제일 마지막으로
+			});
+		},1500);
+		}
+	</script>
+</body>
+</html>
