@@ -53,6 +53,7 @@
 		});
 		let id = rolling();
 
+		//롤링 함수
 		function rolling(){
 			return setInterval(()=>{
 			if($('.item').is(':animated')){	//애니메이션 중에는 작동하지 않도록(안정성을 위해)
@@ -64,7 +65,8 @@
 				});
 			},1500);
 		}
-		// 이전버튼클릭
+
+		// 이전버튼클릭 함수
 		$('.btn-prev').click(function(){
 			if($('.item').is(':animated')){	
 				return;
@@ -74,7 +76,8 @@
 					$(this).detach().appendTo('.list').removeAttr('style');
 				});
 		})
-		// 다음버튼클릭
+
+		// 다음버튼클릭 함수
 		$('.btn-next').click(function(){
 			if($('.item').is(':animated')){	
 				return;
