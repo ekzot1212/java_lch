@@ -9,7 +9,7 @@
 		nav{ position: relative ; height: 50px;}
 		.btn-menu{
 			width: 50px; height: 50px; position: absolute; top: 0; right: 0;
-			border: 0; background: gray;
+			border: 0; background-color:coral ;
 		}
 		.list-menu{
 			width: 200px;height: 500px; border: 1px solid black;
@@ -34,10 +34,10 @@
 			let right = $('.list-menu').css('right');
 			/*
 			Number(문자열) vs parseInt(문자열)
-				- 공통점 : 문자열을 숫자로 변환
-				- 차이점 : 
-					- Number()는 숫자로 바꿀 수 없는 문자가 있는 경우 NaN이 됨 (-202px ->NaN)
-					- parseInt()는 숫자로 바꿀 수 없는 문자가 나타나기 전 까지 숫자를 바꿈  (-202px -> -202)
+			- 공통점 : 문자열을 숫자로 변환
+			- 차이점 : 
+			- Number()는 숫자로 바꿀 수 없는 문자가 있는 경우 NaN이 됨 (-202px ->NaN)
+			- parseInt()는 숫자로 바꿀 수 없는 문자가 나타나기 전 까지 숫자를 바꿈  (-202px -> -202)
 			*/
 			right = parseInt(right);
 
