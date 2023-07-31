@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <div class="inner-box">
+            <input type="text" placeholder="질문">
+            <button class="btn-plus">+</button>
+        </div>
+    </div>
+    <script>
+         $('.btn-plus').click(function(){
+            let element =
+            `<div class="inner-box">
+            <input type="text" placeholder="질문">
+            <button class="btn-minus">-</button>
+        </div>`;
+        $('.box').append(element);
+        })
+        $(document).on('click','.btn-minus',function(){
+            let index = $(this).index();
+            console.log(index);
+            $('.inner-box').eq(index).remove();
+        });
+    </script>
+</body>
+</html>
