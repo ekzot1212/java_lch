@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/jquery.min.js"></script>
+</head>
+<body>
+  <ul>
+    <li>항목1</li>
+    <li>항목2</li>
+    <li>항목3</li>
+  </ul>
+  <button class="btn">버튼1</button>
+  <button class="btn">버튼2</button>
+  <button class="btn">버튼3</button> <br>
+  <script>
+    // for each처럼 요소를 하나씩 꺼내서 작성하기 용이함.
+    // 버튼이 세개있으면 0,1,2 순으로 index에 대입되어서 반복됨.
+
+    //에로우로 쓰기
+    /*
+    $('.btn').each((index, element)=>{   
+      $(element).click(function(){
+          $('li').css('background-color','white');
+          $('li').eq(index).css('background-color','yellow');
+      });
+    });
+    */
+    //function으로 쓰기
+    $('.btn').each(function(index){
+      //this : each에 의해 꺼내진 요소. (.btn)
+      $(this).click(function(){
+        $('li').css('background-color','white');
+        $('li').eq(index).css('background-color','yellow');
+      });
+    });
+  </script>
+</body>
+</html>

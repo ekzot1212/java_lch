@@ -28,6 +28,7 @@
 		//방법1. value를 이용
 		$('[name=box]').click(function(){
 			let value = $(this).val();
+			console.log(value);
 			$('.box').hide();
 			$(value).show();
 		})
