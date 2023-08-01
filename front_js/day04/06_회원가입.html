@@ -80,7 +80,7 @@
 		}
 		function checkPw(){
 			let pw = $('[name=pw]').val();
-			let regex = /^[a-zA-Z0-9!@#$]{8,20}$/;
+			let regex = /^[a-zA-Z0-9!@#$]{8,32}$/;
 			if(regex.test(pw)){
 				$('.error-pw').text('');
 				return true;
@@ -92,6 +92,7 @@
 		function checkPw2(){
 			let pw = $('[name=pw]').val();
 			let pw2 = $('[name=pw2]').val();
+			console.log(pw);
 			if(pw == pw2){
 				$('.error-pw2').text('');
 				return true;

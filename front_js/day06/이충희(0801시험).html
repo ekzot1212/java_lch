@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이충희 시험</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box{
+			width: 900px;  background-color: white;
+			margin-top: 25px;
+		}
+		fieldset{
+			color: black; border: 1px solid black;
+		}
+		span{
+			font-weight: bold;
+		}
+		.text-title, .text-content{
+			 padding: 0 20px 0 30px;
+		}
+		.text-uploadFile{
+			padding-left: 18px;
+		}
+		.box-title, .box-content, .box-uploadFile, .box-write{
+			width: 50%; background-color: white; margin-top: 5px;
+		}
+		[name=content]{
+			height: 200px; text-align: top;
+		}
+		[name=title],[name=content]{
+			width: 300px; border-radius: 3px 3px 3px 3px; border: 1px solid black;
+		}
+		.box-write{
+			text-align: center; padding-top: 10px;
+		}
+		.box-inner-bottom{
+			border-top: 1px solid gray;
+			padding-top: 25px;
+		}
+		table{
+			width: 100%;
+		}
+		thead,tfoot{
+			background-color: lightsalmon; color: white;
+			text-align: center;
+		}
+		tbody{
+			background-color: antiquewhite;
+		}
+		.td-title{
+			width: 60%;
+		}
+		.btn-table{
+			width: 100% ;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box box-inner-top">
+			<fieldset>
+				<legend>공지사항 작성하기</legend>
+				<form action="insert.no" method="post" class="form">
+					<div class="box-title">
+						<span class="text-title">제목</span>
+						<input type="text" name="title" placeholder="제목을 입력하시오." required>
+					</div>
+					<div class="box-content">
+						<span class="text-content">내용</span>
+						<input type="text" name="content" placeholder="내용을 입력하시오." required>
+					</div>
+					<div class="box-uploadFile">
+						<span class="text-uploadFile">첨부파일</span>
+						<input type="file" name="uploadFile">
+					</div>
+					<div class="box-write">
+						<button class="btn-write">작성하기</button>
+					</div>
+				</form>
+			</fieldset>
+		</div>
+		<div class="box box-inner-bottom">
+			<table border="1">
+				<thead>
+					<th class="num">번호</th>
+					<th colspan="2" class="title">제목</th>
+					<th class="writer">작성자</th>
+					<th class="day">작성일</th>
+					<th class="visit-num">조회수</th>
+				</thead>
+				<tbody>
+					<td class="num">9</td>
+					<td class="td-title">공지사항 제목 9</td>
+					<td><button class="btn-table">바로가기</button></td>
+					<td class="writer">user01</td>
+					<td class="day">2021-03-29</td>
+					<td class="visit-num">34</td>
+				</tbody>
+				<tbody>
+					<td class="num">6</td>
+					<td class="td-title">공지사항 제목 6</td>
+					<td><button class="btn-table">바로가기</button></td>
+					<td class="writer">answ445</td>
+					<td class="day">2021-03-12</td>
+					<td class="visit-num">67</td>
+				</tbody>
+				<tbody>
+					<td class="num">3</td>
+					<td class="td-title">공지사항 제목 3</td>
+					<td><button class="btn-table">바로가기</button></td>
+					<td class="writer">testg12</td>
+					<td class="day">2021-03-01</td>
+					<td class="visit-num">98</td>
+				</tbody>
+				<tbody>
+					<td class="num">2</td>
+					<td class="td-title">공지사항 제목 2</td>
+					<td><button class="btn-table">바로가기</button></td>
+					<td class="writer">palwe3</td>
+					<td class="day">2021-01-02</td>
+					<td class="visit-num">85</td>
+				</tbody>
+				<tbody>
+					<td class="num">1</td>
+					<td class="td-title">공지사항 제목 1</td>
+					<td><button class="btn-table">바로가기</button></td>
+					<td class="writer">xml23</td>
+					<td class="day">2020-12-24</td>
+					<td class="visit-num">124</td>
+				</tbody>
+				<tfoot>
+					<td colspan="4">전체공지사항 갯수</td>
+					<td colspan="2">5개</td>
+				</tfoot>
+			</table>
+		</div>
+	</div>
+
+
+	<script>
+
+	</script>
+</body>
+</html>
