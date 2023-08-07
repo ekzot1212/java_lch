@@ -82,8 +82,8 @@ CREATE TABLE `order_list` (
 	`ol_num`	int	NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	`ol_amount`	int	 NOT NULL,
 	`ol_price`	int	 NOT NULL,
-	`or_num`	int	NOT NULL,
-	`op_num`	int	NOT NULL
+	`ol_or_num`	int	NOT NULL,
+	`ol_op_num`	int	NOT NULL
 );
 
 DROP TABLE IF EXISTS `basket`;
@@ -148,14 +148,14 @@ REFERENCES `address` (
 );
 
 ALTER TABLE `order_list` ADD CONSTRAINT `FK_order_TO_order_list_1` FOREIGN KEY (
-	`or_num`
+	`ol_or_num`
 )
 REFERENCES `order` (
 	`or_num`
 );
 
 ALTER TABLE `order_list` ADD CONSTRAINT `FK_option_TO_order_list_1` FOREIGN KEY (
-	`op_num`
+	`ol_op_num`
 )
 REFERENCES `option` (
 	`op_num`
