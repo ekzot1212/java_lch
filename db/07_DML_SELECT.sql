@@ -80,6 +80,9 @@ HAVING절 : 집계함수에 조건 사용
 - count(distinct 속성) : 중복을 배제한 행의 개수
 - sum(속성 또는 식) : 합
 */
+select * from student;
+select * from student 
+where num like '___\_%';
 -- 컴퓨터공학과 학생들을 조회하는 쿼리
 select * from student where major ='컴퓨터공학과'; 
 -- 컴퓨터공학과가 아닌 학생들을 조회하는 쿼리
@@ -89,7 +92,7 @@ select * from course where student_num = '2023135001';
 -- 학점이 3학점인 과목의 과목명을 조회하는 쿼리
 select title from subject where point = '3';
 -- 이름이 3자인 학생 정보를 조회하는 쿼리
-select * from student where name like '___';
+select * from student where name like '___%';
 -- 성이 유씨인 학생 정보를 조회하는 쿼리
 select * from student where name like '유%';
 -- 학생의 학번은 입학년도 4자 + 학과코드 3자 + 번호 3자
@@ -105,6 +108,10 @@ select * from subject where point between '2' and '3';
 select * from course;
 select * from course where professor_name = '이순신' or professor_name = '한석봉';
 select * from course where professor_name in('이순신','한석봉');
+
+select * from student
+where num='2023135001' or num ='2023135002' and major = '방송학과'
+and name = '영심이';
 
 
 -- 2023년에 수강하는 과목들의 과목코드를 조회하는 쿼리
