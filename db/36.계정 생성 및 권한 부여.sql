@@ -18,7 +18,7 @@ grant all privileges on DB명.테이블명 to '아이디'@'접근방법';
 
 grant all privileges on test.* to 'test'@'localhost';
 
-
+grant all privileges on test.* to 'test'@'localhost';
 
 
 
