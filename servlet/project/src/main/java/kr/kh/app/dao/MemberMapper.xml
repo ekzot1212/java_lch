@@ -9,4 +9,7 @@
 	<insert id="insertMember">
 		insert into member(me_id, me_pw) values(#{member.me_id}, #{member.me_pw})
 	</insert>
+	<delete id="deleteMember">
+		delete from member where me_id = #{me_id}
+	</delete>
 </mapper>

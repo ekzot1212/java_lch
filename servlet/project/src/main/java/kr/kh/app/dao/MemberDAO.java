@@ -10,4 +10,6 @@ public interface MemberDAO {
 
 	void insertMember(@Param("member")MemberVO member);
 
+	void deleteMember(@Param("me_id")String me_id);
+
 }

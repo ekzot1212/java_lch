@@ -37,15 +37,35 @@ public class MemberServiceImp implements MemberService{
 		//아이디 중복 확인
 		//아이디가 일치하는 회원 정보를 가져옴
 		MemberVO dbMember = memberDao.selectMember(member.getMe_id());
-		System.out.println(member);
+		//System.out.println(member);
 		//회원 정보가 있으면 => 아이디 중복
 		if(dbMember != null) {
 			return false;
 			
-		}
+		} 
 		memberDao.insertMember(member);
 		return true;
 		
 	}
+
+	@Override
+	public boolean withdraw(MemberVO member) {
+		if(member == null || member.getMe_id() == null || member.getMe_pw() == null) {
+			return false;
+		}
+		//아이디가 일치하는 회원 정보를 가져옴
+		MemberVO dbMember = memberDao.selectMember(member.getMe_id());
+		//회원 정보가 없으면 탈퇴 불가능
+		if(dbMember == null) {
+			return false;
+		} 
+		//비번이 일치하지 않으면
+		if(!dbMember.getMe_pw().equals(member.getMe_pw())) {
+			return false;
+		}
+		memberDao.deleteMember(member.getMe_id());
+		return true;
+	}
+	
 	
 }

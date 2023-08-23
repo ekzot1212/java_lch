@@ -25,3 +25,8 @@ replay_pid*
 java/.classpath
 java/.project
 /bin/
+
+.classpath
+.project
+.settings/
+meta-inf/

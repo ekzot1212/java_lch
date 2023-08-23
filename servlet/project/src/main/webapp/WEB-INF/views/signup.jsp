@@ -13,5 +13,20 @@
 		<input type="password" name="pw"> <br>
 		<button>회원가입</button>
 	</form>
+	<%=request.getAttribute("signupOk") %>
+	<script>
+		<%
+			Boolean result = (Boolean)request.getAttribute("signupOk");
+			if(result != null && result){
+		%>
+			alert('회원가입 성공!')
+		<%
+			}else if(result != null && !result){
+		%>
+			alert('회원가입 실패!')
+		<%
+			}
+		%>
+	</script>
 </body>
 </html>
