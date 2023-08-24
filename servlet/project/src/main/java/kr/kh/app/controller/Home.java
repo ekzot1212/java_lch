@@ -26,7 +26,6 @@ public class Home extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		//서버에서 화면에게 데이터를 전송
 		request.setAttribute("msg", "Hello");
 		//미리 만들어 놓은 home.jsp와 연결
@@ -34,7 +33,6 @@ public class Home extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		//화면에서 보낸 id를 가져옴
 		String id = request.getParameter("id");
 		System.out.println(id);
