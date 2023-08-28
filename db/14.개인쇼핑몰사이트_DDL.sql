@@ -20,7 +20,7 @@ CREATE TABLE `member` (
 DROP TABLE IF EXISTS `address`;
 
 CREATE TABLE `address` (
-	`ad_num`	int	NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	`ad_num`	int	AUTO_INCREMENT NOT NULL PRIMARY KEY ,
 	`ad_name`	varchar(15)	 NOT NULL,
 	`ad_addr`	varchar(50)	 NOT NULL,
 	`ad_addr_detail`	varchar(50)	 NOT NULL,
