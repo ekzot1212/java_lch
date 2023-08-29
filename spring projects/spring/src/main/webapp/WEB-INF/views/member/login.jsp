@@ -10,7 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>로그인</title>
 </head>
 
 <body>
@@ -33,8 +33,8 @@
 	  </ul>
 	</nav>
 	<div class="container">
-		<h1>회원가입</h1>
-		<form action="<c:url value='/member/signup'/>" method="post">
+		<h1>로그인</h1>
+		<form action="<c:url value='/member/login'/>" method="post">
 			<div class="form-group">
 				<label>아이디</label>
 				<input type="text" class="form-control" name="me_id">
@@ -43,11 +43,7 @@
 				<label>비번</label>
 				<input type="password" class="form-control" name="me_pw">
 			</div>
-			<div class="form-group">
-				<label>이메일</label>
-				<input type="email" class="form-control" name="me_email">
-			</div>
-			<button class="btn btn-outline-warning col-12">회원가입</button>
+			<button class="btn btn-outline-warning col-12">로그인</button>
 		</form>
 	</div>
 </body>
