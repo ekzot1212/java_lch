@@ -66,7 +66,7 @@ public class MemberController {
 		}
 		// model 객체에 url이름의 데이터를 url이라는 변수에 저장
 		model.addAttribute("msg", msg);
-		return "message";
+		return "message"; 
 	}
 }
 
