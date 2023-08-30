@@ -2,6 +2,7 @@ package kr.kh.study.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import kr.kh.study.dao.MemberDAO;
@@ -46,10 +47,28 @@ public class MemberServiceImp implements MemberService {
 		return memberDao.insertMember(member); 
 	}
 	
-	private boolean checkRegexMember(MemberVO member) {
+	private boolean checkRegexMember(MemberVO member) { 
 		//필요하면 유효성 검사 코드를 구현
 		return true;
 	}
 
+	@Override
+	public MemberVO login(MemberVO member) {
+		if(member == null || member.getMe_id() == null || member.getMe_pw() == null) {
+			return null;
+		}
+		
+		MemberVO user = memberDao.selectMember(member.getMe_id());
+		if(user == null) {
+			return null;
+		}
+		
+		if(passwordEncoder.matches(member.getMe_pw(), user.getMe_pw())) {
+			return user;
+		}
+		return null;
+	}
 
+
+	
 }

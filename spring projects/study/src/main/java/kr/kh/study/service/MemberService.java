@@ -4,7 +4,9 @@ import kr.kh.study.vo.MemberVO;
 
 public interface MemberService {
 
-	boolean signup(MemberVO member); 
+	boolean signup(MemberVO member);
+
+	MemberVO login(MemberVO member); 
 
 
 }

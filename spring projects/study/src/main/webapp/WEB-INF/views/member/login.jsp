@@ -8,16 +8,15 @@
 	 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 	 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-	<title>Home</title>
+	<title>로그인</title>
 </head>
 <body>
-  	<c:if test="${user == null }">
-      <a href="<c:url value='/member/signup'/>">회원가입</a>
-      <a href="<c:url value='/member/login'/>">로그인</a>
-  	</c:if>
-  	<c:if test="${user != null }">
-      <a href="<c:url value='/member/logout'/>">로그아웃</a>
-  	</c:if>
-  	
+	<h1>로그인</h1>
+	<form action="<c:url value='/member/login'/>" method="post">
+		<input type="text" name="me_id" placeholder="아이디" required> <br>
+		<input type="password" name="me_pw" placeholder="비번" required> <br>
+		<button>로그인</button>
+	</form>
+    
 </body>
 </html>
