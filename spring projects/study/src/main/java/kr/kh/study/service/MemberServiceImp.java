@@ -1,6 +1,7 @@
 package kr.kh.study.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import kr.kh.study.dao.MemberDAO;
@@ -15,6 +16,9 @@ public class MemberServiceImp implements MemberService {
 	// Mapper인식해야 에러안남.
 	@Autowired
 	private MemberDAO memberDao;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 	@Override
 	public boolean signup(MemberVO member) { 
@@ -36,6 +40,9 @@ public class MemberServiceImp implements MemberService {
 		}
 		
 		//회원가입 진행
+		//비밀번호 암호화
+		String encPw = passwordEncoder.encode(member.getMe_pw());
+		member.setMe_pw(encPw);
 		return memberDao.insertMember(member); 
 	}
 	
