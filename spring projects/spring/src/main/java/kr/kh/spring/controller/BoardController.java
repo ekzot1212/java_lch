@@ -1,5 +1,7 @@
 package kr.kh.spring.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,13 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.kh.spring.pagination.Criteria;
+import kr.kh.spring.pagination.PageMaker;
 import kr.kh.spring.service.BoardService;
 import kr.kh.spring.util.Message;
 import kr.kh.spring.vo.BoardVO;
 import kr.kh.spring.vo.MemberVO;
 
 @Controller
-//이 클래스의 모든 url이 /board로 시작하게
 @RequestMapping("/board")
 public class BoardController {
 
@@ -23,7 +26,15 @@ public class BoardController {
 	BoardService boardService;
 	
 	@GetMapping("/list")
-	public String list() {
+	public String list(Model model, Criteria cri) {
+		cri.setPerPageNum(2);
+		//현재 페이지에 맞는 게시글을 가져와야함
+		List<BoardVO> list = boardService.getBoardList(cri);
+		int totalCount = boardService.getTotalCount(cri);
+		PageMaker pm = new PageMaker(3, cri, totalCount);
+		
+		model.addAttribute("pm", pm);
+		model.addAttribute("list", list);
 		return "/board/list";
 	}
 	
@@ -31,11 +42,8 @@ public class BoardController {
 	public String insert() {
 		return "/board/insert";
 	}
-	
-	//데이터 받아옴
 	@PostMapping("/insert")
 	public String insertPost(BoardVO board, HttpSession session, Model model) {
-		//세션에 있는 유저 정보 가져옴. (개발자 도구로 작성자 수정해서 글 등록 방지)
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		Message msg;
 		if(boardService.insertBoard(board, user)) {
@@ -47,4 +55,13 @@ public class BoardController {
 		model.addAttribute("msg", msg);
 		return "message";
 	}
+	@GetMapping("/detail")
+	public String detail(Model model, Integer bo_num , Criteria cri) {
+		boardService.updateViews(bo_num);
+		BoardVO board = boardService.getBoard(bo_num);
+		model.addAttribute("board", board);
+		model.addAttribute("cri", cri);
+		return "/board/detail";
+	}
+	
 }

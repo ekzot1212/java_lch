@@ -1,6 +1,5 @@
 package kr.kh.spring.vo;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
