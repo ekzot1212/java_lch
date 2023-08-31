@@ -4,7 +4,7 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <!-- Brand/logo -->
 	<a class="navbar-brand" href="<c:url value='/' />">
-    <img src="<c:url value='resources/img/logo.jpg'/>" alt="logo" style="width:40px;">
+    <img src="<c:url value='/resources/img/logo.jpg'/>" alt="logo" style="width:40px;">
   </a>
   
   <!-- Links -->
@@ -22,5 +22,8 @@
     	<a class="nav-link" href="<c:url value= '/member/logout' />">로그아웃</a>
     </li>
    </c:if>
+   <li class="nav-item">
+    	<a class="nav-link" href="<c:url value= '/board/list' />">게시판</a>
+    </li>
   </ul>
 </nav>
