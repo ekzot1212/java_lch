@@ -75,6 +75,13 @@ public class UploadFileUtils {
 		}
 		
 	}
+	
+	public static void deleteFile(String uploadPath, String fi_name) {
+		File file = new File(uploadPath+fi_name);
+		if(file.exists()) {
+			file.delete();
+		}
+	}
 }
 
 
