@@ -2,13 +2,17 @@ package kr.kh.study.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.kh.study.service.BoardService;
 import kr.kh.study.vo.BoardVO;
+import kr.kh.study.vo.MemberVO;
 
 @Controller
 public class BoardController {
@@ -34,4 +38,49 @@ public class BoardController {
 		model.addAttribute("board", board);
 		return "/board/detail";
 	}
+	//url 연결(insert.jsp)
+	@GetMapping("/board/insert")
+	public String boardInsert() {
+		return "/board/insert";
+	}
+	@PostMapping("/board/insert")
+	public String insertPost(Model model, BoardVO board, HttpSession session) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		boolean res = boardService.insertBoard(board, user);
+		if(res) {
+			model.addAttribute("msg", "게시글을 등록했습니다.");
+			model.addAttribute("url", "/board/list");
+		}else {
+			model.addAttribute("msg", "게시글을 등록하지 못했습니다.");
+			model.addAttribute("url", "/board/insert");
+		}
+		
+		return "/util/message";
+	}
+	@GetMapping("/board/update")
+	public String boardUpdate(Integer bo_num, Model model, HttpSession session) {
+		BoardVO board = boardService.getBoard(bo_num);
+		model.addAttribute("board", board);
+		return "/board/update";
+	}
+	@PostMapping("/board/update")
+	public String boardUpdatePost(Model model, BoardVO board, HttpSession session) {
+		System.out.println(board);
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		System.out.println(user);
+		boolean res = boardService.update(board,user);
+		if(res) {
+			model.addAttribute("msg", "게시글을 수정했습니다.");
+		}else {
+			model.addAttribute("msg", "게시글을 수정하지 못했습니다.");
+		}
+		model.addAttribute("url", "/board/detail?bo_num="+board.getBo_num());
+		return "/util/message";
+	}
 }
+
+
+
+
+
