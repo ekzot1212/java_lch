@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.kh.study.dao.BoardDAO;
 import kr.kh.study.vo.BoardVO;
+import kr.kh.study.vo.FileVO;
 import kr.kh.study.vo.MemberVO;
 
 @Service
@@ -88,6 +89,14 @@ public class BoardServiceImp implements BoardService{
 			return false;
 		}
 		return boardDao.deleteBoard(bo_num);
+	}
+
+	@Override
+	public List<FileVO> getFileList(Integer bo_num) {
+		if(bo_num == null) {
+			return null;
+		}
+		return boardDao.selectFileList(bo_num);
 	}
 	
 	

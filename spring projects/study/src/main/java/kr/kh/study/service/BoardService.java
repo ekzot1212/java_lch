@@ -3,6 +3,7 @@ package kr.kh.study.service;
 import java.util.List;
 
 import kr.kh.study.vo.BoardVO;
+import kr.kh.study.vo.FileVO;
 import kr.kh.study.vo.MemberVO;
 
 public interface BoardService {
@@ -18,5 +19,7 @@ public interface BoardService {
 	boolean update(BoardVO board, MemberVO user);
 
 	boolean deleteBoard(Integer bo_num, MemberVO user);
+
+	List<FileVO> getFileList(Integer bo_num);
 
 }

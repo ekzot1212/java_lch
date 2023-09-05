@@ -28,4 +28,7 @@
 	<delete id="deleteBoard">
 		delete from board where bo_num = #{bo_num}
 	</delete>
+	<select id="selectFileList" resultType="kr.kh.study.vo.FileVO">
+		select * from file where fi_bo_num = #{bo_num}
+	</select>
 </mapper>

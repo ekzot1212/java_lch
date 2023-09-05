@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.kh.study.service.BoardService;
 import kr.kh.study.vo.BoardVO;
+import kr.kh.study.vo.FileVO;
 import kr.kh.study.vo.MemberVO;
 
 @Controller
@@ -19,6 +20,7 @@ public class BoardController {
 
 	@Autowired
 	private BoardService boardService;
+	
 	
 	@GetMapping("/board/list")
 	public String boardList(Model model) {
@@ -34,8 +36,10 @@ public class BoardController {
 		boardService.updateViews(bo_num);
 		//서비스에게 게시글 번호를 주면서 게시글을 가져오라고 요청
 		BoardVO board = boardService.getBoard(bo_num);
+		List<FileVO> fileList = boardService.getFileList(bo_num);
 		//가져온 게시글을 화면에 전송
 		model.addAttribute("board", board);
+		model.addAttribute("fileList", fileList);
 		return "/board/detail";
 	}
 	//url 연결(insert.jsp)
