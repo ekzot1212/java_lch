@@ -15,14 +15,13 @@
 	<hr>
 	<div>${board.bo_contents }</div>
 	<h3>첨부파일</h3>
-	<c:forEach items="${fileList }" var="file">
-		<a 
-		href="<c:url 
-		value='download${file.fi_name}'/>" 
-		download="${file.fi_ori_name }"
+	<c:forEach items="${fileList}" var="file">
+		<a  href="<c:url 
+			value='/download${file.fi_name}'/>" 
+			download="${file.fi_ori_name }"
 		>${file.fi_ori_name }</a> <br>
 	</c:forEach>
-	<a href="<c:url value='/board/update?bo_num=${board.bo_num }' />">수정</a>
-	<a href="<c:url value='/board/delete?bo_num=${board.bo_num }' />">삭제</a>
+	<a href="<c:url value='/board/update?bo_num=${board.bo_num}'/>">수정</a>
+	<a href="<c:url value='/board/delete?bo_num=${board.bo_num}'/>">삭제</a>
 </body>
 </html>

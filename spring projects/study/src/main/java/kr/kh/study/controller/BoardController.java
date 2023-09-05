@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.kh.study.service.BoardService;
 import kr.kh.study.vo.BoardVO;
@@ -20,7 +21,6 @@ public class BoardController {
 
 	@Autowired
 	private BoardService boardService;
-	
 	
 	@GetMapping("/board/list")
 	public String boardList(Model model) {
@@ -42,16 +42,15 @@ public class BoardController {
 		model.addAttribute("fileList", fileList);
 		return "/board/detail";
 	}
-	//url 연결(insert.jsp)
 	@GetMapping("/board/insert")
 	public String boardInsert() {
 		return "/board/insert";
 	}
 	@PostMapping("/board/insert")
-	public String insertPost(Model model, BoardVO board, HttpSession session) {
-		MemberVO user = (MemberVO)session.getAttribute("user");
+	public String boardInserPost(Model model, BoardVO board, HttpSession session, MultipartFile[] files) {
+		MemberVO user = (MemberVO) session.getAttribute("user");
 		
-		boolean res = boardService.insertBoard(board, user);
+		boolean res = boardService.insertBoard(board, user, files);
 		if(res) {
 			model.addAttribute("msg", "게시글을 등록했습니다.");
 			model.addAttribute("url", "/board/list");
@@ -63,15 +62,19 @@ public class BoardController {
 		return "/util/message";
 	}
 	@GetMapping("/board/update")
-	public String boardUpdate(Integer bo_num, Model model, HttpSession session) {
+	public String boardUpdate(Model model,Integer bo_num) {
 		BoardVO board = boardService.getBoard(bo_num);
+		List<FileVO> fileList = boardService.getFileList(bo_num);
+		
 		model.addAttribute("board", board);
+		model.addAttribute("fileList", fileList);
 		return "/board/update";
 	}
 	@PostMapping("/board/update")
-	public String boardUpdatePost(Model model, BoardVO board, HttpSession session) {
+	public String boardUpdatePost(Model model, BoardVO board, HttpSession session,
+			MultipartFile[] files, int [] delNums) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
-		boolean res = boardService.update(board,user);
+		boolean res = boardService.update(board,user, files, delNums);
 		if(res) {
 			model.addAttribute("msg", "게시글을 수정했습니다.");
 		}else {
@@ -82,10 +85,8 @@ public class BoardController {
 	}
 	
 	@GetMapping("/board/delete")
-	public String boardDelete(Model model, Integer bo_num, HttpSession session) {
-		System.out.println(bo_num);
+	public String boardDelete(Model model,Integer bo_num, HttpSession session) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
-		System.out.println(user);
 		boolean res = boardService.deleteBoard(bo_num, user);
 		if(res) {
 			model.addAttribute("msg", "게시글을 삭제했습니다.");
@@ -96,8 +97,3 @@ public class BoardController {
 		return "/util/message";
 	}
 }
-
-
-
-
-
