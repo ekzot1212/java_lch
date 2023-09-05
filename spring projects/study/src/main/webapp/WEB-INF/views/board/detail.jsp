@@ -23,6 +23,6 @@
 		>${file.fi_ori_name }</a> <br>
 	</c:forEach>
 	<a href="<c:url value='/board/update?bo_num=${board.bo_num }' />">수정</a>
-	<a href="<c:url value='/board/delete' />">삭제</a>
+	<a href="<c:url value='/board/delete?bo_num=${board.bo_num }' />">삭제</a>
 </body>
 </html>

@@ -83,10 +83,10 @@ public class BoardController {
 	
 	@GetMapping("/board/delete")
 	public String boardDelete(Model model, Integer bo_num, HttpSession session) {
-		MemberVO user = (MemberVO)session.getAttribute("user");
-		boolean res = boardService.deleteBoard(bo_num, user);
-		System.out.println(user);
 		System.out.println(bo_num);
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		System.out.println(user);
+		boolean res = boardService.deleteBoard(bo_num, user);
 		if(res) {
 			model.addAttribute("msg", "게시글을 삭제했습니다.");
 		}else {
