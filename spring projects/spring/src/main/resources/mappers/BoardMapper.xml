@@ -48,7 +48,7 @@
 				where ${cri.type} like concat('%', #{cri.search}, '%')
 			</otherwise>
 		</choose>
-		order by bo_num desc
+		order by bo_ori_num desc, bo_num asc
 		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	<select id="selectBoardCount" resultType="int">
@@ -114,3 +114,4 @@
 			bo_num = #{bo_num}
 	</update>
 </mapper>
+
