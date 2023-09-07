@@ -1,5 +1,6 @@
 package kr.kh.spring.interceptor;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -24,6 +25,18 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		if(user != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
+			
+			//자동로그인을 체크한 경우
+			if(user.isAutoLogin()) {
+				//쿠키를 생성하여 필요한 정보를 넣고, 클라이언트에게 전달
+				Cookie cookie = new Cookie("loginCookie", session.getId());
+				cookie.setPath("/");
+				int day = 7;
+				int time = 60 * 60 * 24 * day;
+				cookie.setMaxAge(time);
+				response.addCookie(cookie);
+				//쿠키에 넣은 필요한 정보를 DB에도 추가
+			}
 		}
 	}
 }
