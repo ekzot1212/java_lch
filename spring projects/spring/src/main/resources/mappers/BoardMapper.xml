@@ -14,34 +14,35 @@
 		<result property="bo_title" column="bo_title"/>
 		<result property="bo_me_id" column="bo_me_id"/>
 		<result property="bo_contents" column="bo_contents"/>
-		<result property="bo_reg_date" column="bo_reg_date"/>
 		<result property="bo_up_date" column="bo_up_date"/>
+		<result property="bo_reg_date" column="bo_reg_date"/>
 		<collection property="fileVoList" ofType="kr.kh.spring.vo.FileVO" column="bo_num" select="selectFileList"/>
 	</resultMap>
+
+
 	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="board.bo_num" >
 		insert into board(bo_num, bo_ori_num, bo_title, bo_contents, bo_me_id)
 		
 		select 
-			ifnull(max(bo_num),0)+1,
-			<choose>
-				<when test="board.bo_ori_num == 0">
-					ifnull(max(bo_num),0)+1,
-				</when>
-				<otherwise>
-					#{board.bo_ori_num},
-				</otherwise>			 
-			</choose>
+			ifnull(max(bo_num),0)+1, 
+		<choose>
+			<when test="board.bo_ori_num == 0">	
+				ifnull(max(bo_num),0)+1,
+			</when>
+			<otherwise>
+				#{board.bo_ori_num},
+			</otherwise>
+		</choose>
 			#{board.bo_title}, #{board.bo_contents}
 			,#{board.bo_me_id}
 		from 
 			board
 	</insert>
-	
 	<select id="selectBoardList" resultType="kr.kh.spring.vo.BoardVO">
 		select * from board
 		<choose>
 			<when test='cri.type.equals("0")'>
-				where bo_title like concat('%', #{cri.search}, '%') or
+				where bo_title like concat('%', #{cri.search}, '%') or 
 					bo_contents like concat('%', #{cri.search}, '%')
 			</when>
 			<otherwise>
@@ -55,7 +56,7 @@
 		select count(*) from board
 		<choose>
 			<when test='cri.type.equals("0")'>
-				where bo_title like concat('%', #{cri.search}, '%') or
+				where bo_title like concat('%', #{cri.search}, '%') or 
 					bo_contents like concat('%', #{cri.search}, '%')
 			</when>
 			<otherwise>
@@ -71,7 +72,7 @@
 	</update>
 	<insert id="insertFile">
 		insert file(fi_name, fi_ori_name, fi_bo_num) 
-		values(#{file.fi_name}, #{file.fi_ori_name},#{file.fi_bo_num})
+		values(#{file.fi_name},#{file.fi_ori_name},#{file.fi_bo_num})
 	</insert>
 	<select id="selectFileList" resultType="kr.kh.spring.vo.FileVO">
 		select * from file where fi_bo_num = #{bo_num}
@@ -94,7 +95,6 @@
 	<delete id="deleteBoard">
 		delete from board where bo_num = #{bo_num}
 	</delete>
-<!-- 	키워드이름이라 역따옴표 like -->
 	<select id="selectLike" resultType="kr.kh.spring.vo.LikeVO">
 		select * from `like` where li_bo_num = #{li_bo_num} and li_me_id = #{li_me_id}
 	</select>
@@ -104,7 +104,7 @@
 	</insert>
 	<update id="updateLike">
 		update `like` set li_state = #{like.li_state} 
-		where li_bo_num = #{like.li_bo_num} and li_me_id = #{like.li_me_id}
+			where li_bo_num = #{like.li_bo_num} and li_me_id = #{like.li_me_id}
 	</update>
 	<update id="updateBoardLike">
 		update board set
@@ -113,5 +113,10 @@
 		where
 			bo_num = #{bo_num}
 	</update>
+	<update id="updateBoardComment">
+		update board set
+			bo_comment = (select count(*) from comment where co_bo_num = #{bo_num})
+		where
+			bo_num = #{bo_num}
+	</update>
 </mapper>
-

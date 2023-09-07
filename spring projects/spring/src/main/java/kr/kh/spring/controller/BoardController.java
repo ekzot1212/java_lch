@@ -25,7 +25,6 @@ import kr.kh.spring.vo.LikeVO;
 import kr.kh.spring.vo.MemberVO;
 
 @Controller
-// 리퀘스트매핑에 /board 적으면 기본경로? 로 지정됨
 @RequestMapping("/board")
 public class BoardController {
 
@@ -73,7 +72,6 @@ public class BoardController {
 		model.addAttribute("like", like);
 		return "/board/detail";
 	}
-	
 	@GetMapping("/update")
 	public String update(Model model,Integer bo_num, HttpSession session) {
 		BoardVO board = boardService.getBoard(bo_num);
@@ -116,12 +114,11 @@ public class BoardController {
 	@PostMapping("/like")
 	public Map<String, Object> ajaxTest(@RequestBody LikeVO likeVo){
 		Map<String, Object> map = new HashMap<String, Object>();
-		// 추천 : 1, 비추천 : -1, 취소 : 0
+		//추천 : 1, 비추천 : -1, 취소: 0
 		int res = boardService.like(likeVo);
 		BoardVO board = boardService.getBoard(likeVo.getLi_bo_num());
 		map.put("res", res);
 		map.put("board", board);
 		return map;
 	}
-	
 }
