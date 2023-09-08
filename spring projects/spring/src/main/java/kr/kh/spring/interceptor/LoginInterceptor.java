@@ -1,18 +1,25 @@
 package kr.kh.spring.interceptor;
 
+import java.util.Date;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import kr.kh.spring.service.MemberService;
 import kr.kh.spring.vo.MemberVO;
 
 // 상속받아야 함
 public class LoginInterceptor extends HandlerInterceptorAdapter{
 
+	@Autowired
+	MemberService memberService;
+	
 	@Override
 	public void postHandle(
 		HttpServletRequest request,
@@ -36,6 +43,11 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 				cookie.setMaxAge(time);
 				response.addCookie(cookie);
 				//쿠키에 넣은 필요한 정보를 DB에도 추가
+				user.setMe_session_id(session.getId());
+				//1주일 뒤
+				Date date = new Date(System.currentTimeMillis() + time * 1000);
+				user.setMe_session_limit(date);
+				memberService.updateMemberSession(user);
 			}
 		}
 	}

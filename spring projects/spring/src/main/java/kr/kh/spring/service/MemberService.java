@@ -8,6 +8,10 @@ public interface MemberService {
 
 	MemberVO login(MemberVO member);
 
+	void updateMemberSession(MemberVO user);
+
+	MemberVO getMemberBySession(String session_id);
+
 
 
 }

@@ -60,6 +60,8 @@ public class MemberController {
 	public String memberLogout(HttpServletRequest request, Model model) { 
 		HttpSession session = request.getSession();
 		MemberVO user = (MemberVO)session.getAttribute("user");
+		user.setMe_session_limit(null);
+		memberService.updateMemberSession(user);
 		Message msg = new Message("/", null);
 		if(user != null) {
 			// 유저가 로그인 되어 있으면 -> 로그아웃
