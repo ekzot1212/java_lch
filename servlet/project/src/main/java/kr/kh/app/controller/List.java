@@ -3,10 +3,6 @@ package kr.kh.app.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import kr.kh.app.service.BoardService;
 import kr.kh.app.service.BoardServiceImp;
 import kr.kh.app.vo.BoardVO;
