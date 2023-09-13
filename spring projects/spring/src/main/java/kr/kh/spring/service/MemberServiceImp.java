@@ -2,7 +2,11 @@ package kr.kh.spring.service;
 
 import java.util.regex.Pattern;
 
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +17,16 @@ import kr.kh.spring.vo.MemberVO;
 // 원래는 생성자 작성하고 객체를 만들어서 넘겨줘야 하는데 그러지 않아도 됨.
 @Service
 public class MemberServiceImp implements MemberService {
-
+	
 	@Autowired
 	private MemberDAO memberDao;
 	
 	//비번을 암호화하기 위한 객체
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private JavaMailSender mailSender;
 	
 	@Override
 	public boolean signup(MemberVO member) {
@@ -90,6 +97,26 @@ public class MemberServiceImp implements MemberService {
 	public MemberVO getMemberBySession(String session_id) {
 		
 		return memberDao.selectMemberBySession(session_id);
+	}
+
+	@Override
+	public boolean sendMail(String to, String title, String contents) {
+		 try {
+		        MimeMessage message = mailSender.createMimeMessage();
+		        MimeMessageHelper messageHelper 
+		            = new MimeMessageHelper(message, true, "UTF-8");
+
+		        messageHelper.setFrom("ekzot1212@naver.com");  // 보내는사람 생략하거나 하면 정상작동을 안함
+		        messageHelper.setTo(to);     // 받는사람 이메일
+		        messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+		        messageHelper.setText(contents, true);  // 메일 내용 ,true는 메일에 html코드 있으면 html코드를 메일에 바로 적용해줌
+
+		        mailSender.send(message);
+		        return true;
+		    } catch(Exception e){
+		        System.out.println(e);
+		    }
+		return false;
 	}
 
 	
