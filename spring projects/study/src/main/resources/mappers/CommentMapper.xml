@@ -25,4 +25,17 @@
 		where
 			co_bo_num = #{bo_num}
 	</select>
+	<select id="selectComment" resultType="kr.kh.study.vo.CommentVO">
+		select * from comment where co_num = #{co_num}
+	</select>
+	<delete id="deleteComment">
+		delete from comment where co_num = #{co_num}
+	</delete>
+	<update id="updateComment">
+		update comment
+		set
+			co_contents = #{comment.co_contents}
+		where
+			co_num = #{comment.co_num}
+	</update>
 </mapper>
