@@ -1,5 +1,8 @@
 package kr.kh.edu.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -65,5 +68,19 @@ public class MemberController {
 			model.addAttribute("url", "member/login");
 		}
 		return "/main/message";
+	}
+	
+	@GetMapping("/member/logout")
+	public String memberLogout(HttpServletRequest request, Model model) { 
+		HttpSession session = request.getSession();
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		if(user != null) {
+			// 유저가 로그인 되어 있으면 -> 로그아웃
+			session.removeAttribute("user");
+			model.addAttribute("msg", "로그아웃 성공!");
+			model.addAttribute("url", "");
+		}
+		// model 객체에 url이름의 데이터를 url이라는 변수에 저장
+		return "/main/message"; 
 	}
 }
