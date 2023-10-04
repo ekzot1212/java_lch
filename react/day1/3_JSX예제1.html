@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="container">
+    <!-- <h1>클릭 수 : 0</h1>
+    <button>클릭</button> -->
+  </div>
+  <script type="text/babel">
+    const container = document.getElementById('container');
+    /*
+    - 함수로 요소를 생성
+    - 요소 생성시 함수명을 대문자로 시작 => 다른 요소에 배치할 수 있게 하기 위해
+    */
+    function Element(){
+      return(
+        <div>
+          <h1>클릭 수 : 0</h1>  
+          <button>클릭</button>
+        </div>
+      );
+    }
+    function Htag(){
+      return <h1>클릭 수 : 0</h1>
+    }
+    function Btn(){
+      return <button>클릭</button>
+    }
+    function Element2(){
+      return(
+        <div>
+          <Htag/>
+          <Btn/>  
+        </div>
+      )
+    }
+    ReactDOM.render(<Element2/>, container);
+    
+
+  </script>
+</body>
+</html>
