@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<title>단위 변환 예제</title>
+	<style>
+	</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const root = document.getElementById('root');
+
+    function App(){
+
+      let [amount, setAmount] = React.useState(0);
+			let [fliped, setFliped] = React.useState(false);
+
+			const onChange = (e)=>setAmount(e.target.value);
+      const reset = ()=>setAmount(0);
+			const convert = ()=>setFliped(!fliped)
+      return(
+				<div>
+					<div>
+						<input type="number" onChange={onChange} value={fliped ? amount * 60 : amount} disabled={fliped}/> 분
+					</div>
+					<div>
+						<input type="number" onChange={onChange} value={fliped ? amount : Math.floor(amount/6)/10} disabled={!fliped}/> 시간
+					</div>
+					<button onClick={reset}>Reset</button>
+					<button onClick={convert}>Convert</button>
+				</div>
+			);
+    }
+    ReactDOM.render(<App/>, root);
+  </script>
+</body>
+</html>
