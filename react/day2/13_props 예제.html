@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<title>props 예제</title>
+	<style>
+	</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const root = document.getElementById('root');
+	
+		function Btn1(){
+			return(
+				<button>버튼1</button>
+			)
+		}
+		function Btn2(){
+			return(
+				<button>버튼2</button>
+			)
+		}
+		// props 사용하는 방법1
+		function Btn(props){
+			return(
+				<button style={props.css}>{props.text}</button>
+			)
+		}
+		// props 사용하는 방법2
+		function OtherBtn({text, style}){
+			return(
+				<button style={style}>{text}</button>
+			)
+		}
+		function App(){
+      return(
+				<div>
+					<Btn1/>
+					<Btn2/>
+					<br/>
+					<Btn text="버튼1" css={{color : 'red', fontSize : 20}}/>
+					<Btn text="버튼2" css={{backgroundColor : 'tomato'}}/>
+					<br/>
+					// 여기에 있는 text, style등은 그냥 변수명임.
+					<OtherBtn text="버튼1" style={{color : 'red', fontSize : 20}}/>
+					<OtherBtn text="버튼2" style={{backgroundColor : 'tomato'}}/>
+				</div>
+			);
+    }
+    ReactDOM.render(<App/>, root);
+  </script>
+</body>
+</html>
