@@ -17,6 +17,9 @@ public interface BoardDAO {
 	boolean insertBoard(@Param("board")BoardVO board);
 
 	void insertFile(@Param("file")FileVO fileVo);
-	
+
+	BoardVO selectBoard(@Param("num")int num);
+
+	List<FileVO> selectFileList(@Param("num")int num);
 
 }

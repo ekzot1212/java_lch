@@ -12,14 +12,14 @@
 			or bo_me_id like concat('%', #{cri.s}, '%')
 		</if>
 		<if test='cri.t == "total"'>
-		where 	
+		where 
 			bo_title like concat('%', #{cri.s}, '%')
 			or bo_contents like concat('%', #{cri.s}, '%')
-		</if>	
+		</if>
 		<if test='cri.t == "writer"'>
-		where 
+		where  
 			bo_me_id like concat('%', #{cri.s}, '%')
-		</if>			
+		</if>	
 		order by bo_ori_num desc, bo_num asc
 		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
@@ -32,28 +32,43 @@
 			or bo_me_id like concat('%', #{cri.s}, '%')
 		</if>
 		<if test='cri.t == "total"'>
-		where 	
+		where 
 			bo_title like concat('%', #{cri.s}, '%')
 			or bo_contents like concat('%', #{cri.s}, '%')
-		</if>	
+		</if>
 		<if test='cri.t == "writer"'>
-		where 
+		where  
 			bo_me_id like concat('%', #{cri.s}, '%')
 		</if>
 	</select>
 	<insert id="insertBoard" keyProperty="board.bo_num" useGeneratedKeys="true">
 		insert into board(bo_num, bo_ori_num, bo_title, bo_contents, bo_me_id)
 		select 
-			ifnull(max(bo_num), 0)+1,
-			ifnull(max(bo_num), 0)+1,
+			ifnull(max(bo_num), 0)+1, 
+			ifnull(max(bo_num), 0)+1, 
 			#{board.bo_title},
 			#{board.bo_contents},
 			#{board.bo_me_id}
-		from 
-			board
+		from board
 	</insert>
 	<insert id="insertFile">
 		insert into file(fi_name, fi_ori_name, fi_bo_num)
-		values(#{file.fi_name}, #{file.fi_ori_name}, #{file.fi_bo_num})
+		values(#{file.fi_name},#{file.fi_ori_name},#{file.fi_bo_num})
 	</insert>
+	<select id="selectBoard" resultType="BoardVO">
+		select 
+			* 
+		from 
+			board
+		where
+			bo_num = #{num}
+	</select>
+	<select id="selectFileList" resultType="FileVO">
+		select
+			*
+		from
+			file
+		where
+			fi_bo_num = #{num}
+	</select>
 </mapper>
