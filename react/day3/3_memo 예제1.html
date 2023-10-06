@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+	<title>memo 예제</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+  <div id="root"></div>
+	<script type="text/babel">
+		const root = document.getElementById('root');
+
+		function Btn({text, onClick}){
+			console.log(text, "렌더링");
+			return(
+				<button onClick={onClick}>{text}</button>
+			)
+		};
+		//memo적용하면 바뀌는 값만 렌더링 함. (안바뀌면 렌더링 안함)
+		const MemoBtn = React.memo(Btn);
+
+		function App(){
+			let [value, setValue] = React.useState("버튼1")
+			//버튼1을 클릭하면 스테이트의 setValue를 이용하기 때문에 렌더링됨 -> 버튼2도 렌더링됨
+			const onClick = ()=> setValue("버튼1 클릭됨");
+			return(
+				<div>	
+					<MemoBtn text={value} onClick={onClick}/>
+					<MemoBtn text={"버튼2"}/>
+				</div>
+			)
+		}
+		ReactDOM.render(<App/>, root);
+	</script>
+
+
+	
+</body>
+</html>
