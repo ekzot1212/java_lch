@@ -1,19 +1,18 @@
-import './css/App.css';
+// import './css/App.css';
+import { useState } from "react";
+import ContentsA from "./ContentsA";
+import ContentsB from "./ContentB";
+import Box from "./Box";
 
 function Body(){
 
 	return(
 		<div className="body">
-			<div className="container">
-				<div className="box">
-					<button>이전</button>	
-					<span>1 / 5</span>
-					<button>다음</button>	
-				</div>
-				<div className="box">2</div>
-			</div>
+			<Box className="left" maxPage={13} Contents={ContentsA}/>
+			<Box className="right" maxPage={6} Contents={ContentsB}/>
 		</div>
 	)
 }
+
 
 export default Body;
