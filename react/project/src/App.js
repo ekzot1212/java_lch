@@ -5,12 +5,14 @@ import Main2 from "./Main2";
 import Main3 from "./Main3";
 import {BrowserRouter, Route, Routes} from "react-router-dom"
 
+// App 컴포넌트
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
         <Header/>
         <Routes>
+          //Header컴포넌트의 url과 연결
           <Route path="/" exact element={<Main/>}></Route>
           <Route path="/menu2" element={<Main2/>}></Route>
           <Route path="/menu3" element={<Main3/>}></Route>
