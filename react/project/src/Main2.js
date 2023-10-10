@@ -6,6 +6,7 @@ function Main2(){
   let [pw, setPw] = useState('');
   const idChange = (e)=>setId(e.target.value);
   const pwChange = (e)=>setPw(e.target.value);
+  //navigate를 이용해서 main3으로 전송
   const navigate = useNavigate();
   const sendData = ()=>{
     navigate('/menu3',{

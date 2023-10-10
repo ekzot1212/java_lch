@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 function Main3(){
   let [id, setId] = useState('');
   let [pw, setPw] = useState('');
+  //받을때는 useLocation으로 받아옴
   const location = useLocation();
 	//location.state에 전송할 데이터가 있으면
   if(location.state != null){
